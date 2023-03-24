@@ -9,12 +9,11 @@
     </head>
     <body>
         <div id="navbar-container"></div>
-        <div class="container my-5">
+        <div class="container col-lg-6 col-md-12 mb-4 mb-md-0">
             <h1>Bienvenue sur le site de Speedrun!</h1>
-                <p>Le speedrun est ...
-                    Les speedrunners ...
-                </p>
-                    <br>
+                <p>Le speedrun est ...</p>
+                <p>Les speedrunners ...</p> 
+                <br>
                 <p>Il existe différents types de speedruns selon les règles et les restrictions appliquées aux joueurs, tels que :
                     <ul>
                         <li> type 1 : <p> détails</p></li>
