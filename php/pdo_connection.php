@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'speedrun_website';
 $username = 'root';
-$password = '';
+$password = 'root1234';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 
