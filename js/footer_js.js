@@ -1,7 +1,7 @@
-// Charger lle footer depuis le fichier footer.html
-fetch("footer.html")
+// Charger le footer depuis le fichier footer.php
+fetch("footer.php")
 .then(response => response.text())
 .then(data => {
-  const navbarContainer = document.querySelector("#footer-container");
-  navbarContainer.innerHTML = data;
+  const footerContainer = document.querySelector("#footer-container");
+  footerContainer.innerHTML = data;
 });
