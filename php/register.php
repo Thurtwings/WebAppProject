@@ -2,6 +2,15 @@
 require "../php/pdo_connection.php";
 session_start();
 
+
+/* if($_POST['password'] !== $_POST['passwordVerif'])
+{?>
+    <p>Veuillez vérifier votre mot de passe </p>
+    <?php
+    exit;
+} */
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -10,9 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    if ($user) {
+    if ($user) 
+    {
         $error = "nom d'utilisateur déjà pris";
-    } else {
+    } 
+    else 
+    {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare('INSERT INTO users (username, password) VALUES (?, ?)');
         $stmt->execute([$username, $hash]);
@@ -22,26 +34,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
     <title>Register</title>
 </head>
 <body>
-    <h1>Register</h1>
+    <div id="navbar-container"></div>
+    <br>
+        <br>
+        <br>
+    <h1 class="text-center">Créer un compte</h1>
     <?php if (isset($error)) { ?>
+        
         <p><?= $error ?></p>
     <?php } ?>
-    <form action="../php/register.php" method="post">
-        <label for="username">Username:</label>
+    <form action="../php/register.php" method="POST" class="text-center">
+        <label for="username">Pseudonyme:</label><br>
         <input type="text" name="username" id="username"><br>
-        <label for="password">Password:</label>
+        <label for="password">Mot de passe:</label><br>
         <input type="password" name="password" id="password"><br>
-        <input type="submit" value="Register">
+        <label for="password">Répeter mot de passe:</label><br>
+        <input type="password" name="passwordVerif" id="password"><br>
+
+        <?php  ?>
+        <br>
+        <input type="submit" value="S'enregistrer">
+        <br>
+        <a href="../pages/login.html" ">Se connecter</a>
     </form>
-    <a href="../pages/login.html">Back to login</a>
+        <script type="text/javascript" src="../js/navbar_js.js"></script>
+        <script type="text/javascript" src="../js/footer_js.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
 </body>
+    <div id="footer-container"></div>
 </html>
 
