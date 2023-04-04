@@ -17,7 +17,7 @@ session_start();
         <div id="navbar-container"></div>
 
         <h1 class="text-center m-3">Je suis la page de profil de <?php echo($_SESSION['user_name']); ?></h1>
-
+            <img src="" class="rounded-circle border border-5 border-dark" alt="" />
 
 
 

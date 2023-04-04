@@ -18,7 +18,7 @@ session_start();
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link text-white" href="../pages/index.php">Accueil</a>
-                    <a class="nav-link text-white" href="../pages/types.php">Types de Speedrun</a>
+                    <a class="nav-link text-white" href="../pages/typesSR.php">Types de Speedrun</a>
                     <a class="nav-link text-white" href="../pages/BestSR.php">Vidéos</a>
                     <?php 
                     if(!isset($_SESSION['user_name'])) 
