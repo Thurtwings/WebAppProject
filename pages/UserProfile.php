@@ -1,24 +1,8 @@
-Ce dépot est un projet de site web sur le speedrunning
-
-les participant à ce projet sont : 
-    - Schneider Grégory
-    - Leneveu Steeven
 
 
-commit: 
-"
-DONE: 
-WIP:
-TODO:
-"
-
-git commit -m "DONE: 
-WIP:
-TODO:"
-
-
-
-Base fichier HTML:
+<?php 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,20 +11,21 @@ Base fichier HTML:
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
-        <title>the titre</title>
+        <title>Mon profile</title>
     </head>
     <body>
         <div id="navbar-container"></div>
 
+        <h1 class="text-center m-3">Je suis la page de profil de <?php echo($_SESSION['user_name']); ?></h1>
 
-            <!-- en bas du body -->
+
+
+
+
+
+
         <script type="text/javascript" src="../js/navbar_js.js"></script>
         <script type="text/javascript" src="../js/footer_js.js"></script>
-
-            <!-- Si le fichier n'a pas de head-->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script> <!-- -->
     </body>
-    
         <div id="footer-container"></div>
-    
 </html>

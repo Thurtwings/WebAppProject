@@ -1,24 +1,4 @@
-Ce dépot est un projet de site web sur le speedrunning
-
-les participant à ce projet sont : 
-    - Schneider Grégory
-    - Leneveu Steeven
-
-
-commit: 
-"
-DONE: 
-WIP:
-TODO:
-"
-
-git commit -m "DONE: 
-WIP:
-TODO:"
-
-
-
-Base fichier HTML:
+<?php ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,13 +12,15 @@ Base fichier HTML:
     <body>
         <div id="navbar-container"></div>
 
+        <strong><u><h1 class="text-center"> Les différents types de speedrun </h1></u></strong>
+
+
+
+
 
             <!-- en bas du body -->
         <script type="text/javascript" src="../js/navbar_js.js"></script>
         <script type="text/javascript" src="../js/footer_js.js"></script>
-
-            <!-- Si le fichier n'a pas de head-->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script> <!-- -->
     </body>
     
         <div id="footer-container"></div>
