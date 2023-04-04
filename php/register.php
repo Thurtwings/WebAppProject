@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user) {
-        $error = 'Username already taken';
+        $error = "nom d'utilisateur déjà pris";
     } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare('INSERT INTO users (username, password) VALUES (?, ?)');
