@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,7 +22,7 @@
             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4GV_2w2PY7Q" allowfullscreen> </iframe>
         </div>
     </div>
-        <!-- Ajouter ici des vidéos pour d'autres jeux -->
+        <?php   ?>
   </div>
 </div>
 <script src="../js/navbar_js.js"></script>
