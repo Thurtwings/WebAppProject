@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     else 
     {
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $pdo->prepare('INSERT INTO users (username, user_email, password) VALUES (?, ?, ?)');
+        // $stmt = $pdo->prepare('INSERT INTO users (username, user_email, password) VALUES (?, ?, ?)');
+        $stmt = $pdo->prepare('INSERT INTO users (username, user_email, password, registration_time) VALUES (?, ?, ?, NOW())');
         $stmt->execute([$username, $mail, $hash]);
         $_SESSION['user_id'] = $pdo->lastInsertId();
         $_SESSION['user_email'] = $_POST['email'];

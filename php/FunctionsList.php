@@ -11,7 +11,7 @@ class Utilities
     public function __construct($id)
     {
         $this->index = $id;
-        $this->sql = new PDO('mysql:host=localhost;dbname=speedrun_website', 'root', 'root1234');
+        $this->sql = new PDO('mysql:host=localhost;dbname=speedrun_website', 'root', '');
 
     }
 
@@ -43,7 +43,8 @@ class Utilities
 
     public function Get($column, $table, $row ,$id)
     {
-        $req = "SELECT " . $column . " FROM " . $table . " WHERE '".$row."' = '" . $id . "'; ";
+        $req = "SELECT " . $column . " FROM " . $table . " WHERE " . $row . " = '" . $id . "'; ";
+
         $result = $this->sql->query($req);
 
         if ($result !== false) 
@@ -68,7 +69,7 @@ class Utilities
 
 
 
-    public function addNew($table, $id, $title, $description, $video_url, $user_id = 0, $game_id = 0, $category_id = 0)
+    public function addNewVideo($table, $id, $title, $description, $video_url, $user_id = 0, $game_id = 0, $category_id = 0)
     {
         $req = "INSERT INTO `".$table."`(`id`, `title`, `description`, `video_url`, `user_id`, `game_id`, `category_id`) 
             VALUES (NULL ,'".$id."','".$title."', '".$description."', '".$video_url."', '".$user_id."', '".$game_id."', '".$category_id."');";
@@ -79,7 +80,8 @@ class Utilities
 
     public function Set($table, $column, $row  ,$id, $value)
     {
-        $req = "UPDATE ".$table." SET ".$column." = '".$value."' WHERE `".$row."` ='".$id."'";
+        $req = "UPDATE ".$table." SET ".$column." = '".$value."' WHERE `".$row."` ='".$id."';";
+        echo ($req);
         $this->sql->query($req);
     }
 
