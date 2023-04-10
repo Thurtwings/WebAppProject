@@ -1,5 +1,5 @@
 Ce dépot est un projet de site web sur le speedrunning
-
+http://localhost/WebAppProject/pages/index.php
 les participant à ce projet sont : 
     - Schneider Grégory
     - Leneveu Steeven
@@ -16,11 +16,15 @@ git commit -m "DONE:
 WIP:
 TODO:"
 
-
+require_once('GoToThePage.php');
 
 Base fichier HTML:
 
-<!DOCTYPE html>
+
+    
+        <div id="footer-container"></div>
+    
+</html><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -40,7 +44,3 @@ Base fichier HTML:
             <!-- Si le fichier n'a pas de head-->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script> <!-- -->
     </body>
-    
-        <div id="footer-container"></div>
-    
-</html>
