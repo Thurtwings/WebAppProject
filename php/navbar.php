@@ -1,6 +1,9 @@
 <?php 
 session_start();
 require_once('../GoToThePage.php');
+require_once('Utilities.php');
+
+$utils = new Utilities(0);
 ?>
 
 <!DOCTYPE html>
