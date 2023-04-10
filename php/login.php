@@ -1,7 +1,7 @@
 <?php
 
 require "../php/pdo_connection.php";
-require "../php/FunctionsList.php";
+require "../php/Utilities.php";
 
 $utils = new Utilities(0);
 

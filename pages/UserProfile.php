@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once('../php/FunctionsList.php');
+require_once('../php/Utilities.php');
 
 $utils = new Utilities(0);
 $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_id']);
@@ -18,17 +18,17 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+        
         <title>Mon profil</title>
     </head>
     <body>
         <div id="navbar-container"></div>
-<body>
+
     <form method="get">
         <div class="container-fluid">
             <div class="row">
-            <div class="col-sm-3 bg-light">
-                <ul class="list-group">
+            <div class="col-sm-3 bg-success">
+                <ul class="list-group my-3">
                     <li class="list-group-item"><a href="#">Mon profil</a></li>
                     <li class="list-group-item"><a href="../php/UpdateProfile.php?id=<?php echo $_SESSION['user_id']; ?>">Modifier mes informations</a></li>
                     <li class="list-group-item"><a href="#user_videos">Mes vidéos</a></li>
@@ -59,48 +59,42 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
             <br>
            
             <div class="row mt-5 justify-content-center" id="user_videos">
-            <div class="col-md-6">
+                <div class="col-lg-10 col-mg-12">
                     <div class="card">
                         <div class="card-body text-center">
-                        <?php  
+                            <?php  
                             foreach ($utils->SelectAll("videos") as $key => $value) 
-                            {?>
-                               
-                                <div class="col">
-                                    <div class="card shadow-sm">
-                                    <iframe width="893" height="502" src="<?php echo $utils->Get("video_url", "videos", "user_id",  $_SESSION['user_id'] ) ?>" 
-                                        title="<?php echo $utils->Get("title", "videos", "user_id",  $_SESSION['user_id'] )?>" 
-                                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                        allowfullscreen></iframe>
-                                        
-
-                                    <div class="card-body">
-                                        <p class="card-text">Video description</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                        </div>
-                                        <small class="text-muted">9 mins</small>
+                            {
+                                if($value['user_id'] == $_SESSION['user_id'])
+                                {?>
+                                    <div class="col-sm-12 col-md-11 col-lg-10">
+                                        <div class="card shadow-sm">
+                                            <div class="card-body">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe class="embed-responsive-item" src="<?php echo $value['video_url']; ?>" title="<?php echo $value['title']; ?>" allowfullscreen></iframe>
+                                                </div>
+                                                <p class="card-text" style="margin-top: 1rem;"><?php echo $value['title']; ?></p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary mx-auto">Supprimer</button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary mx-auto">Modifier</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    </div>
-         
-                    <?php }
-                        ?>
-
+                        <?php   }?>
+                        <?php   }
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-         </div>
     </div>
-  </div>
+</div>
 
-        
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
         <script type="text/javascript" src="../js/navbar_js.js"></script>
         <script type="text/javascript" src="../js/footer_js.js"></script>

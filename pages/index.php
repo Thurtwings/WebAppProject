@@ -11,6 +11,7 @@ include("../referencement.php");
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
+        
         <title>Speedrun</title>
     </head>
     <body>
@@ -44,6 +45,7 @@ include("../referencement.php");
             </div>
             <script type="text/javascript" src="<?php echo $NAVBAR_JS; ?>"></script>
             <script type="text/javascript" src="<?php echo $FOOTER_JS; ?>"></script>
+            <script type="text/javascript" src="../js/css-doodle.min.js ?>"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     </body>
     <div id="footer-container"></div>

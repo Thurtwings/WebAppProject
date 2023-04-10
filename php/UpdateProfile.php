@@ -1,6 +1,6 @@
 <?php
 
-require_once('../php/FunctionsList.php');
+require_once('../php/Utilities.php');
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $utils = new Utilities($id);
