@@ -23,7 +23,7 @@ if(isset($_POST['execute']))
             die('Extension de fichier non autorisée.');
         }
         
-        $upload_path = '../img/';
+        $upload_path = '../img/UsersProfilePictures/';
         $new_file_name = uniqid() . '.' . $file_ext;
         move_uploaded_file($file_tmp, $upload_path . $new_file_name);
         $new_file_path = $new_file_name;
@@ -93,7 +93,7 @@ if(isset($_POST['execute']))
                         <div class="card-body text-center">
                         <?php  if($utils->Get("profile_picture", 'users', 'id', $id) !== null)
                             {?>
-                            <img src="../img/<?php echo $utils->Get("profile_picture", 'users', 'id', $id); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
+                            <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $id); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
                             <?php } 
                             else 
                             {?>

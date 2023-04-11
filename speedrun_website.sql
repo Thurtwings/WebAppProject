@@ -177,7 +177,7 @@ INSERT INTO `videos` (`id`, `title`, `description`, `video_url`, `user_id`, `gam
 (7, 'THE LUCKY DIME CAPER STARRING DONALD DUCK en BEAT THE GAME par CHACHAMAXX en 16:29 | SPEEDONS 2022', NULL, 'https://www.youtube.com/embed/8X_b--aneik', NULL, NULL, NULL),
 (8, 'TEENAGE MUTANT NINJA TURTLES en 22:12 par LF712  | SPEEDONS', NULL, 'https://www.youtube.com/embed/-qe2D99W6nM', NULL, NULL, NULL),
 (9, 'RESIDENT EVIL 2 REMAKE en 53:54 par Petrichor | SPEEDONS', NULL, 'https://www.youtube.com/embed/G8GkHg51qnM', 2, NULL, NULL),
-(10, 'LITTLE BIG ADVENTURE (any%) en 30:13 par Blake_Faythe | SPEEDONS', NULL, 'https://www.youtube.com/embed/8-_yIS-w8v8', NULL, NULL, NULL);
+(10, 'LITTLE BIG ADVENTURE (any%) en 30:13 par Blake_Faythe | SPEEDONS', NULL, 'https://www.youtube.com/embed/8-_yIS-w8v8', NULL, NULL, NULL),
 (11, 'LION KING en ANY% EASY par NEETSEL en 13:16.06', NULL, 'https://www.youtube.com/embed/ljp2BXJ3Kcw', NULL, NULL, NULL),
 (12, 'CONCERT CANBLASTER', NULL, 'https://www.youtube.com/embed/pcv4NLaPSIs', NULL, NULL, NULL);
 --

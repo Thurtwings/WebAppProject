@@ -26,7 +26,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
 
     <form method="get">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-center">
             <div class="col-sm-3 bg-success">
                 <ul class="list-group my-3">
                     <li class="list-group-item"><a href="#">Mon profil</a></li>
@@ -44,7 +44,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                         <div class="card-body text-center">
                         <?php  if($utils->Get("profile_picture", 'users', 'id', $_SESSION['user_id']) !== null)
                             {?>
-                                <img src="../img/<?php echo $utils->Get("profile_picture", 'users', 'id', $_SESSION['user_id']); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
+                                <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $_SESSION['user_id']); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
                             <?php } 
                             else 
                             {?>
@@ -58,10 +58,11 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
             </div>
             <br>
            
-            <div class="row mt-5 justify-content-center" id="user_videos">
+            <div class="row mt-5 d-flex justify-content-center" id="user_videos">
                 <div class="col-lg-10 col-mg-12">
                     <div class="card">
                         <div class="card-body text-center">
+                            <h2><u>Mes vidéos</u></h2>
                             <?php  
                             foreach ($utils->SelectAll("videos") as $key => $value) 
                             {
