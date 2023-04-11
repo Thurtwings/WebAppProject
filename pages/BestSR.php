@@ -28,7 +28,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-  <style>
+  <!-- <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -43,7 +43,7 @@
         font-size: 3.5rem;
       }
     }
-  </style>
+  </style> -->
 
 
 </head>
@@ -53,13 +53,23 @@
   
   <main class="bg-image"style="background-image: url('../img/backgroundMinecraft.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" height: 100vh;>
 
-    <div id="navbar-container"></div>
-    
     <div class="container my-5 ">
     
-        <div class="card mx-auto">
-            <div class="card-body bg-success bg-opacity-25"><h1 class="fw-bold text-center text-uppercase">Le coin des vidéos</h1></div>
-        </div>
+      <!-- <div class="card bg-warning card-border-danger">
+        <h1 class="art-shadow fw-bold text-center text-uppercase text-primary">Le coin des vidéos</h1>
+      </div> -->
+      <div class="card mb-3">
+  <img src="../img/fondTitreVideos.jpg" class="card-img-top" alt="Wild Landscape"/>
+  <div class="card-body bg-light bg-opacity-25">
+    <h2 class="card-title art-degrade fw-bold text-center text-uppercase display-4">Le coin des vidéos</h2>
+    <p class="card-text text-center fs-4">
+      Retrouvez toutes les  vidéos de vos speedrun préférés !
+    </p>
+    
+  </div>
+</div>
+      
+
         <?php for ($i=0; $i < 2 ; $i++) 
             { 
             echo "<br>";
@@ -79,6 +89,7 @@
                 </div>
 
                 <div class="carousel-inner">
+                  
                     <div class="carousel-item active">
                         <iframe class="d-block w-100" width="853" height="480" src="https://www.youtube.com/embed/QVeLfzUyngw?list=PLcztE7s3xChAcj1drP6l2Smz5hWaDI7Ge" title="CASTLEVANIA (Any%) en 12:55 par Janthe | SPEEDONS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
@@ -113,13 +124,11 @@
                     </div>
                     <button class="carousel-control-prev" type="button" data-mdb-target="#carousel-video" data-mdb-slide="prev">
                         <img src="../img/Button 5.png">
-                        <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span> -->
+                        
                     </button>
                     <button class="carousel-control-next" type="button" data-mdb-target="#carousel-video" data-mdb-slide="next">
                         <img src="../img/Button 4.png">
-                        <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span> -->
+                        
                     </button>
                 </div>
             </div>
@@ -159,7 +168,12 @@
 
   
   </div>
+
+   
+
   </footer>
+
+   
   
 <script src="https://unpkg.com/css-doodle@0.34.8/css-doodle.min.js"></script>
 <script src="../js/navbar_js.js"></script>

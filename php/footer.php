@@ -77,7 +77,6 @@ session_start();
 
 <ul class="list-unstyled pt-3">
     <li><a href="#">À propos</a></li>
-    <li><a href="#">FAQ</a></li>
     <li><a href="../Legal Stuff/mentions.html">Mentions légales</a></li>
     <li><a href="../Legal Stuff/cgu.html">Conditions d'utilisation</a></li>
     <!-- <li><a href="#">Politique de retour et d'échange</a></li> -->
