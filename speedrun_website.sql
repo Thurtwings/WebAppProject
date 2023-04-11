@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 10 avr. 2023 à 07:03
+-- Généré le : lun. 10 avr. 2023 à 15:15
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -114,14 +114,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` char(60) NOT NULL,
   `registration_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`) VALUES
-(2, 'AdministrateurS', 'thurtwings@gmail.com', '643278f5451de.png', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', '2023-04-08 21:06:27');
+(2, 'AdministrateurS', 'thurtwings@gmail.com', '6433c26e01cf6.jpeg', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', '2023-04-08 21:06:27'),
+(3, 'AdministrateurG', 'thurtwings@gmail.com', '6433d0d85ac72.jpeg', '$2y$10$wZQQhWFTtAj.SyKJhlfsAeURc4itQF5BZDdn3kDverfA.E2zVO97S', '2023-04-10 09:02:45');
 
 -- --------------------------------------------------------
 
@@ -168,16 +169,17 @@ CREATE TABLE IF NOT EXISTS `videos` (
 
 INSERT INTO `videos` (`id`, `title`, `description`, `video_url`, `user_id`, `game_id`, `category_id`) VALUES
 (1, 'CASTLEVANIA (Any%) en 12:55', NULL, 'https://www.youtube.com/embed/QVeLfzUyngw?list=PLcztE7s3xChAcj1drP6l2Smz5hWaDI7Ge', 2, NULL, NULL),
-(2, 'PORTAL en 15:31 par Biiwix | SPEEDONS', NULL, 'https://www.youtube.com/embed/PsirprHHNyw?list=PLcztE7s3xChAcj1drP6l2Smz5hWaDI7Ge', NULL, NULL, NULL),
+(2, 'PORTAL en 15:31 par Biiwix | SPEEDONS', NULL, 'https://www.youtube.com/embed/PsirprHHNyw?list=PLcztE7s3xChAcj1drP6l2Smz5hWaDI7Ge', 2, NULL, NULL),
 (3, 'CELESTE en TAS FAREWELL par KILAYE en 10:37.1 | SPEEDONS 2022', NULL, 'https://www.youtube.com/embed/MsXOlGhJylk?list=PLcztE7s3xChB23jkHwEMI7UMxri97tv3d', NULL, NULL, NULL),
 (4, 'LONELY MOUNTAINS DOWNHILL en NG+ / 16 TRACKS par ROLESAFE en 30:56 | SPEEDONS 2022', NULL, 'https://www.youtube.com/embed/Ka84DSfjiGE?list=PLcztE7s3xChB23jkHwEMI7UMxri97tv3d', NULL, NULL, NULL),
 (5, 'ROCKMAN 4 BCAS en ANY% par BARRYLESJAMBES en 27:02.8 | SPEEDONS 2022', NULL, 'https://www.youtube.com/embed/bCqe-FqjfT8', NULL, NULL, NULL),
 (6, 'ALEX KIDD IN MIRACLE WORLD DX en ANY% par STRACKEL en 20:26.07 | SPEEDONS 2023', NULL, 'https://www.youtube.com/embed/mLMS96jxeK4', NULL, NULL, NULL),
 (7, 'THE LUCKY DIME CAPER STARRING DONALD DUCK en BEAT THE GAME par CHACHAMAXX en 16:29 | SPEEDONS 2022', NULL, 'https://www.youtube.com/embed/8X_b--aneik', NULL, NULL, NULL),
 (8, 'TEENAGE MUTANT NINJA TURTLES en 22:12 par LF712  | SPEEDONS', NULL, 'https://www.youtube.com/embed/-qe2D99W6nM', NULL, NULL, NULL),
-(9, 'RESIDENT EVIL 2 REMAKE en 53:54 par Petrichor | SPEEDONS', NULL, 'https://www.youtube.com/embed/G8GkHg51qnM', NULL, NULL, NULL),
+(9, 'RESIDENT EVIL 2 REMAKE en 53:54 par Petrichor | SPEEDONS', NULL, 'https://www.youtube.com/embed/G8GkHg51qnM', 2, NULL, NULL),
 (10, 'LITTLE BIG ADVENTURE (any%) en 30:13 par Blake_Faythe | SPEEDONS', NULL, 'https://www.youtube.com/embed/8-_yIS-w8v8', NULL, NULL, NULL);
-
+(11, 'LION KING en ANY% EASY par NEETSEL en 13:16.06', NULL, 'https://www.youtube.com/embed/ljp2BXJ3Kcw', NULL, NULL, NULL),
+(12, 'CONCERT CANBLASTER', NULL, 'https://www.youtube.com/embed/pcv4NLaPSIs', NULL, NULL, NULL);
 --
 -- Contraintes pour les tables déchargées
 --
