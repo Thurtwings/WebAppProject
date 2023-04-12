@@ -132,7 +132,7 @@
                     </button>
                 </div>
             </div>
-            <!-- Ajouter ici des vidéos pour d'autres jeux -->
+            
         </div>
 
         <?php   for ($i=0; $i < 3 ; $i++) 
@@ -150,7 +150,7 @@
             foreach ($utils->SelectAll('videos') as $key => $value) 
             {
               ?>
-<!--  -->
+
             <div class="col">
               <div class="card shadow-sm bg-success bg-opacity-75">
                   <iframe class="mx-auto" width="100%" height="225" src="<?php echo $value['video_url']; ?>" title="LITTLE BIG ADVENTURE (any%) en 30:13 par Blake_Faythe | SPEEDONS" frameborder="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -167,8 +167,8 @@
                       </small>
                   </div>
 
+              </div>
             </div>
-      </div>
             <?php } ?>
           
 
