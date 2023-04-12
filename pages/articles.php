@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.72.0">
-    <title>Album example · Bootstrap</title>
+    <title>Articles</title>
 
 
   <link rel="stylesheet" href="../css/style.css">
@@ -48,96 +48,68 @@
                 </div>
         </div>
       
-        <!-- Petite boucle PHP permettant de générer des retour à la ligne -->
-        <?php for ($i=0; $i < 2 ; $i++) 
-            { 
+        <!-- Petite boucle PHP permettant de générer 3 retours à la ligne juste pour la pratique ;) -->
+        <?php 
+        for ($i=0; $i < 2 ; $i++) 
+        { 
             echo "<br>";
-            }
+        }
         ?>
         
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
-               
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 mx-auto">
-                    <div class="card my-4 bg-success bg-opacity-75">
-                        <img src="../img/article01Image.png" class="card-img-top" alt="Image d'illustration">
-                        <div class="card-body">
-                            <h5 class="card-title fs-3 fw-bold text-white">Le speedrun kesako?!</h5>
-                            <p class="card-text article-text text-white" style="text-align:justify">
-                            Le speedrun est une pratique de jeu vidéo consistant à terminer un jeu aussi rapidement que possible. Les joueurs s'entraînent pour atteindre des temps records en utilisant des techniques spécifiques, telles que des bugs ou des raccourcis, pour finir le jeu plus rapidement.<br><br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <?php
+                                foreach ($utils->SelectAll('articles') as $key => $value) 
+                                {?>
+                                    
+                                    <div class="card my-4 bg-success bg-opacity-75">
+                                        <img src="../img/<?php echo $value['article_cover_picture_link']; ?>" class="card-img-top" alt="Image d'illustration" id="<?php echo $value['article_id']; ?>">
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-3 fw-bold text-white" ><?php echo $value['article_title']; ?></h5>
+                                            
+                                            <p class="card-text article-text text-white" style="text-align:justify"><?php echo $value['article_content']; ?></p>
+
+                                            <a href="#article-text" class="btn btn-primary btn-lire-article">Lire l'article</a>
+                                            <small class="d-flex justify-content-end text-white fs-6"><a  href="user_details.php?user_id=<?php echo $value['user_id'] ?>" class="text-dark fw-bold"><?php echo  $utils->Get("username", "users", "id", $utils->Get("user_id","articles","article_id", $value['article_id']) );?></a></small>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <?php   
+                                }
+                            ?>
                             
-                            Le speedrun a connu une évolution rapide ces dernières années. Avec l'essor des réseaux sociaux et des plateformes de streaming, de plus en plus de joueurs ont commencé à s'intéresser à cette pratique. Les communautés en ligne se sont développées, permettant aux joueurs de partager des astuces et des techniques pour améliorer leurs temps. De plus, de nombreux événements de speedrun ont été organisés à travers le monde, attirant des milliers de spectateurs en ligne et en personne.<br><br>
-                            
-                            Le speedrun est devenu une pratique très compétitive, avec des records du monde très convoités et une forte culture de la rivalité entre les joueurs. Les jeux les plus populaires pour le speedrun sont souvent les jeux classiques de l'ère des consoles, comme les jeux Super Mario Bros, The Legend of Zelda ou Sonic the Hedgehog.<br><br>
-                            
-                            Malgré cette popularité croissante, certains critiques ont mis en avant des inquiétudes concernant l'utilisation de logiciels tiers pour aider les joueurs à améliorer leurs temps, ou le risque de causer des dommages au matériel de jeu. Cependant, la communauté du speedrun continue à prospérer et à se développer, avec de nouveaux jeux et des records du monde battus régulièrement.<br><br>
-                            </p>
-
-                            <a href="#article-text" class="btn btn-primary btn-lire-article">Lire l'article</a>
-                            <small class="d-flex justify-content-end text-white fs-6"><a  href="" class="text-dark fw-bold"><?php echo  $utils->Get("username", "users", "id", $utils->Get("user_id","articles","article_id", 2) );?></a></small>
-                        </div>
-                    </div>
-
-                    <?php for ($i=0; $i < 2 ; $i++) 
-                        { 
-                        echo "<br>";
-                        }
-                    ?>
-
-                    <div class="card my-4 bg-success bg-opacity-75">
-                        <img src="../img/HowStartSR.png" class="card-img-top" alt="Image d'illustration">
-                        <div class="card-body">
-                            <h5 class="card-title fs-3 fw-bold text-white">Tuto: démarrer le speedrun</h5>
-                            <p class="card-text article-text text-white" style="text-align:justify">
-                            Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :<br><br>
-
-                            1.Choisissez un jeu : Tout d'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s'agir de n'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.<br><br>
-
-                            2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.<br><br>
-
-                            3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.<br><br>
-
-                            4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.<br><br>
-
-                            5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.<br><br>
-
-                            En suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !<br><br>
-                            </p>
-
-                            <a href="#article-text" class="btn btn-primary btn-lire-article">Lire l'article</a>
-                            <small class="d-flex justify-content-end text-white fs-6"><a  href="" class="text-dark fw-bold"><?php echo  $utils->Get("username", "users", "id", $utils->Get("user_id","articles","article_id", 4) );?></a></small>
-                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <script>
-                // On cache le texte de l'article au chargement de la page
-                document.querySelectorAll(".article-text").forEach(function(element) {
-                    element.style.display = "none";
-                });
-
-                // On ajoute un gestionnaire d'événement sur tous les boutons "Lire l'article"
-                document.querySelectorAll(".btn-lire-article").forEach(function(bouton) {
-                    bouton.addEventListener("click", function() {
-                        var articleText = this.parentNode.querySelector(".article-text");
-
-                        if (articleText.style.display === "none") {
-                            articleText.style.display = "block";
-                            this.textContent = "Réduire l'article";
-                            this.nextElementSibling.style.display = "inline-block";
-                        } else {
-                            articleText.style.display = "none";
-                            this.textContent = "Lire l'article";
-                            this.nextElementSibling.style.display = "none";
-                        }
+                
+                <script>
+                    // On cache le texte de l'article au chargement de la page
+                    document.querySelectorAll(".article-text").forEach(function(element) {
+                        element.style.display = "none";
                     });
-                });
-            </script>
 
-        </div>
+                    // On ajoute un gestionnaire d'événement sur tous les boutons "Lire l'article"
+                    document.querySelectorAll(".btn-lire-article").forEach(function(bouton) {
+                        bouton.addEventListener("click", function() {
+                            var articleText = this.parentNode.querySelector(".article-text");
+
+                            if (articleText.style.display === "none") {
+                                articleText.style.display = "block";
+                                this.textContent = "Réduire l'article";
+                                this.nextElementSibling.style.display = "inline-block";
+                            } else {
+                                articleText.style.display = "none";
+                                this.textContent = "Lire l'article";
+                                this.nextElementSibling.style.display = "none";
+                            }
+                        });
+                    });
+                </script>
+                </div>
 
         <?php   for ($i=0; $i < 3 ; $i++) 
                 { 

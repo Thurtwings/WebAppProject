@@ -4,21 +4,21 @@
     <title>Contactez nous!</title>
 </head>
 <body>
-    <div id="navbar-container"></div>
+    <div id="navbar-container"></div>   
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                 <h5 class="text-uppercase">Informations de contact</h5>
-                <p><strong>Nom ou raison sociale :</strong> [Nom de l'entreprise ou de l'organisation]</p>
-                <p><strong>Adresse :</strong> [Adresse postale de l'entreprise ou de l'organisation]</p>
-                <p><strong>Email de contact :</strong> [Adresse email de l'entreprise ou de l'organisation]</p>
-                <p><strong>Téléphone :</strong> [Numéro de téléphone de l'entreprise ou de l'organisation]</p>
+                <p><strong>Nom ou raison sociale :</strong> Les Bros</p>
+                <p><strong>Adresse :</strong> Chacun chez soi</p>
+                <p><strong>Email de contact :</strong> contact_us@thisdomain.com</p>
+                <p><strong>Téléphone :</strong> 0123456789</p>
             </div> 
             
             <form>
                 <!-- Name input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="form4Example1" class="form-control" />
+                    <input type="text" id="form4Example1" class="form-control"/>
                     <label class="form-label" for="form4Example1">Nom</label>
                 </div>
                 
