@@ -23,7 +23,7 @@ if(isset($_POST['execute']))
             die('Extension de fichier non autorisée.');
         }
         
-        $upload_path = '../img/';
+        $upload_path = '../img/UsersProfilePictures/';
         $new_file_name = uniqid() . '.' . $file_ext;
         move_uploaded_file($file_tmp, $upload_path . $new_file_name);
         $new_file_path = $new_file_name;
@@ -73,19 +73,19 @@ if(isset($_POST['execute']))
         
         <div id="navbar-container"></div>
 
-        <form method="get">
         <div class="container-fluid">
+            <form method="get">
             <div class="row">
-            <div class="col-sm-3 bg-light">
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="../pages/UserProfile.php">Mon profil</a></li>
-                    <li class="list-group-item"><a href="../php/UpdateProfile.php?id=<?php echo $id; ?>">Modifier mes informations</a></li>
-                    <li class="list-group-item"><a href="#">Mes vidéos</a></li>
-                    <li class="list-group-item"><a href="#">Mes temps</a></li>
-                    <li class="list-group-item"><a href="#">Mes paramètres</a></li>
-                </ul>
-        </div>
-    </form>
+                <div class="col-sm-3 bg-light">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="../pages/UserProfile.php">Mon profil</a></li>
+                        <li class="list-group-item"><a href="../php/UpdateProfile.php?id=<?php echo $id; ?>">Modifier mes informations</a></li>
+                        <li class="list-group-item"><a href="#">Mes vidéos</a></li>
+                        <li class="list-group-item"><a href="#">Mes temps</a></li>
+                        <li class="list-group-item"><a href="#">Mes paramètres</a></li>
+                    </ul>
+                </div>
+        </form>
     <div class="col-9">
             <div class="row mt-5 justify-content-center">
                 <div class="col-md-6">
@@ -93,7 +93,7 @@ if(isset($_POST['execute']))
                         <div class="card-body text-center">
                         <?php  if($utils->Get("profile_picture", 'users', 'id', $id) !== null)
                             {?>
-                            <img src="../img/<?php echo $utils->Get("profile_picture", 'users', 'id', $id); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
+                            <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $id); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
                             <?php } 
                             else 
                             {?>
@@ -120,13 +120,15 @@ if(isset($_POST['execute']))
                 <button type="submit" class="btn btn-primary" name="execute">Sauvegarder</button>
             </form>
         </div>
-
+        </div>
+        </div>
+      
         <!-- en bas du body -->
         <script type="text/javascript" src="../js/navbar_js.js"></script>
         <script type="text/javascript" src="../js/footer_js.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script> <!-- -->
+        <div id="footer-container"></div>
     </body>
     
-        <div id="footer-container"></div>
     
 </html>

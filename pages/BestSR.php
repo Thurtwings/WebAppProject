@@ -69,10 +69,11 @@
 </div>
       
 
-        <?php for ($i=0; $i < 2 ; $i++) 
-            { 
+        <?php 
+        for ($i=0; $i < 2 ; $i++) 
+        { 
             echo "<br>";
-            }
+        }
         ?>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
@@ -140,23 +141,29 @@
                 }
         ?>   
 
-
+<!-- Cards -->
     <div class="album py-5 bg-success bg-opacity-50">
       <div class="container">
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <?php foreach ($utils->SelectAll('videos') as $key => $value) {?>
-
+            <?php 
+            foreach ($utils->SelectAll('videos') as $key => $value) 
+            {
+              ?>
+<!--  -->
             <div class="col">
               <div class="card shadow-sm bg-success bg-opacity-75">
                   <iframe class="mx-auto" width="100%" height="225" src="<?php echo $value['video_url']; ?>" title="LITTLE BIG ADVENTURE (any%) en 30:13 par Blake_Faythe | SPEEDONS" frameborder="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                   
-                  <h5 class="card-title mx-auto text-white text-center"><?php echo $value['title']; ?></h5>
+                  <h5 class="card-title mx-auto text-white text-center">
+                    <?php echo "<a class='text-white' href='game_details.php?game_id=".$value['game_id']."'>".$utils->Get("title", "games", "id", $value['game_id'])."</a>"."<br>"." en ".$utils->Get("run_time", "videos", "id", $value['id']); ?>
+</h5>
+
                   
                 <div class="card-body bg-success bg-opacity-75">
-                  <a  href="" class="card-text text-white"><?php echo $utils->Get("username", "users", "id", $utils->Get("user_id","videos","id", $value['id']));?></a>
-                  <div class="d-flex justify-content-between align-items-center">
-                </div>
+                  <?php echo  "<a class='card-text text-white' href='user_details.php?user_id=".$value['user_id']."'>".$utils->Get("username", "users", "id", $utils->Get("user_id","videos","id", $value['id']));?></a>
+                    <small class="d-flex justify-content-end align-items-center"><a href=""><?php echo $value["category_speedrun"]  ?></a></small>
+                
               </div>
             </div>
       </div>

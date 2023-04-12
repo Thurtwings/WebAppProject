@@ -11,7 +11,7 @@ class Utilities
     public function __construct($id)
     {
         $this->index = $id;
-        $this->sql = new PDO('mysql:host=localhost;dbname=speedrun_website', 'root', '');
+        $this->sql = new PDO('mysql:host=localhost;dbname=speedrun_website', 'root', 'root1234');
 
     }
 

@@ -1,7 +1,9 @@
 <?php
 
-require "../php/pdo_connection.php";
-require "../php/Utilities.php";
+require_once "../php/pdo_connection.php";
+require_once "../php/Utilities.php";
+require_once('../GoToThePage.php');
+
 
 $utils = new Utilities(0);
 
