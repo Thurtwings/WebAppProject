@@ -4,7 +4,7 @@
     <title>Contactez nous!</title>
 </head>
 <body>
-    <div id="navbar-container"></div>
+    <div id="navbar-container"></div>   
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
