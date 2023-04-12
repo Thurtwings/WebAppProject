@@ -10,7 +10,7 @@
     $BEST_SPEEDRUNS = '../pages/BestSR.php';
     $CONTACT = '../pages/Contact.php';
     $INDEX = '../pages/index.php';
-    $TYPES_SPEEDRUNS = '../pages/typesSR.php';
+    $ARTICLES = '../pages/articles.php';
     $PROFILE = '../pages/UserProfile.php';
     $SETTINGS = '../pages/Settings.php';
     
