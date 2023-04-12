@@ -69,7 +69,21 @@ $utils = new Utilities(0);
           ?>
           <div class="dropdown">
               <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <img src="../img/default_avatar.png" class="rounded-circle" height="25" alt="Default avatar" loading="lazy" />
+                <?php 
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id']) 
+                {
+                    if ($utils->Get("profile_picture", 'users', 'id', $_SESSION['user_id']) !== null) 
+                    {?>
+                              <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $_SESSION['user_id']); ?>" class="rounded-circle" height="25" alt="User profile picture">
+                          <?php } else { ?>
+                              <img src="../img/default_avatar.png" class="rounded-circle" height="25" alt="User profile picture">
+                          <?php }
+                }
+                else
+                {?>
+                    <img src="../img/default_avatar.png" class="rounded-circle" height="25" alt="User profile picture">
+        <?php   }?>
+                <!-- <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $_SESSION['user_id']); ?>" class="rounded-circle" height="25" alt="Default avatar" loading="lazy" /> -->
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                 <?php 
