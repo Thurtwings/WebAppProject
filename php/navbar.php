@@ -24,7 +24,7 @@ $utils = new Utilities(0);
     <div class="container ">
       <!-- Navbar brand -->
       <a class="navbar-brand me-2">
-        <img src="../img/LogoWebsite.png" alt="Logo du site" height="35">
+        <img src="../img/Logo RushRunners.png" alt="Logo du site" height="35">
       </a>
 
       <!-- Toggle button -->
@@ -48,7 +48,7 @@ $utils = new Utilities(0);
           <li class="nav-item">
             <div class="navbar-nav d-inline-flex">
               <a class="nav-link text-white" href="<?php echo $INDEX; ?>">Accueil</a>
-              <a class="nav-link text-white" href="<?php echo $TYPES_SPEEDRUNS; ?>">Types de Speedrun</a>
+              <a class="nav-link text-white" href="<?php echo $ARTICLES; ?>">Articles</a>
               <a class="nav-link text-white" href="<?php echo $BEST_SPEEDRUNS; ?>">Vidéos</a>
               <a class="nav-link text-white me-3" href="<?php echo $CONTACT; ?>">Nous contacter</a>
             </div>

@@ -1,4 +1,11 @@
-
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost
+-- Généré le : mer. 12 avr. 2023 à 09:02
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,15 +27,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `article_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `article_id` int NOT NULL,
   `article_title` varchar(255) NOT NULL,
   `article_content` text,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`article_id`),
-  KEY `fk_article_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `articles`
@@ -41,18 +45,6 @@ INSERT INTO `articles` (`article_id`, `article_title`, `article_content`, `user_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `game_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `games`
 --
 
@@ -60,10 +52,8 @@ CREATE TABLE `games` (
   `id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
-  `game_picture` varchar(320) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+  `game_picture` varchar(320) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `games`
@@ -82,7 +72,6 @@ INSERT INTO `games` (`id`, `title`, `description`, `game_picture`) VALUES
 (10, 'LITTLE BIG ADVENTURE', 'Little Big Adventure est un jeu d\'aventure sorti en 1994 où le joueur incarne Twinsen, un héros doté de pouvoirs spéciaux qui doit sauver sa planète du joug d\'un tyran maléfique. Le jeu se déroule dans un monde ouvert où le joueur doit explorer différents lieux, interagir avec les personnages non-joueurs, résoudre des énigmes et combattre des ennemis. Le but ultime est de vaincre le tyran pour sauver la planète et rétablir la paix.', NULL),
 (12, 'THE LION KING', NULL, NULL),
 (13, 'ELDEN RING', NULL, NULL);
-
 
 -- --------------------------------------------------------
 
@@ -124,13 +113,11 @@ CREATE TABLE `users` (
   `registration_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`) VALUES
-
 (2, 'AdministrateurS', 'thurtwings@gmail.com', '6435698872402.png', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', '2023-04-08 21:06:27'),
 (4, 'KILAYE', 'kilaye@gmail.com', '6434311b7bc71.jpg', '$2y$10$ZpLwRx/oxPGxpmtX6v5ztugThfDyht1100hgNVNc.U.DE7KtX1fb.', '2023-04-10 15:38:39'),
 (5, 'Janthe', 'janthe@gmail.com', NULL, '$2y$10$sspdXakOdTgYSxnn5VJVLeAtCV7SyqYDnlS5uYI7GCCzgVsE9zCom', '2023-04-11 07:07:52'),
@@ -173,15 +160,9 @@ CREATE TABLE `videos` (
   `video_url` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
   `game_id` int DEFAULT NULL,
-   `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
+  `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
   `run_time` time NOT NULL
-
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `game_id` (`game_id`),
-  KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `videos`
@@ -206,11 +187,11 @@ INSERT INTO `videos` (`id`, `title`, `description`, `video_url`, `user_id`, `gam
 --
 
 --
--- Index pour la table `categories`
+-- Index pour la table `articles`
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `game_id` (`game_id`);
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`article_id`),
+  ADD KEY `fk_article_user_id` (`user_id`);
 
 --
 -- Index pour la table `games`
@@ -259,10 +240,10 @@ ALTER TABLE `videos`
 --
 
 --
--- AUTO_INCREMENT pour la table `categories`
+-- AUTO_INCREMENT pour la table `articles`
 --
-ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `articles`
+  MODIFY `article_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `games`
@@ -300,7 +281,6 @@ ALTER TABLE `user_speedrun_runs`
 ALTER TABLE `videos`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
-
 --
 -- Contraintes pour les tables déchargées
 --
@@ -313,25 +293,12 @@ ALTER TABLE `articles`
   ADD CONSTRAINT `fk_articles_user_id` FOREIGN KEY (`article_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `categories`
---
-ALTER TABLE `categories`
-  ADD CONSTRAINT `fk_categories_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `rankings`
 --
 ALTER TABLE `rankings`
   ADD CONSTRAINT `fk_rankings_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_rankings_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `videos`
---
-ALTER TABLE `videos`
-  ADD CONSTRAINT `fk_videos_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_videos_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

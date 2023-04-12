@@ -36,9 +36,9 @@
 
 <div id="navbar-container"></div>
   
-  <main class="bg-image"style="background-image: url('../img/backgroundMinecraft.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" height: 100vh;>
+  <main class="bg-image"style="background-image: url('../img/AccueilFond.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" height: 100vh;>
 
-    <div class="container my-5 ">
+  <div class="container my-5 ">
         <!--Card présentant l'article-->
         <div class="card mb-3">
             <img src="../img/fondTitreVideos.jpg" class="card-img-top" alt="Wild Landscape"/>
