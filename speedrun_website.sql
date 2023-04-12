@@ -4,6 +4,7 @@
 --
 -- Hôte : localhost
 
+
 -- Généré le : mer. 12 avr. 2023 à 12:22
 
 -- Version du serveur : 8.0.27
@@ -68,43 +69,18 @@ CREATE TABLE `games` (
 --
 
 INSERT INTO `games` (`id`, `title`, `description`, `game_picture`) VALUES
-(1, 'CASTLEVANIA', 'Castlevania est une série de jeux d\'action-aventure gothique avec des éléments de plateforme, de combat et de puzzle. Le joueur y incarne un chasseur de vampires combattant des créatures surnaturelles et explore des châteaux sombres et labyrinthiques.', NULL),
-(2, 'PORTAL', 'Portal est un jeu vidéo de puzzle développé par Valve Corporation. Le joueur utilise un pistolet à portails pour résoudre des énigmes dans des salles d\'essai contrôlées par une intelligence artificielle malveillante.', NULL),
-(3, 'CELESTE', 'Celeste est un jeu vidéo de plateforme qui suit les aventures de Madeline alors qu\'elle escalade une montagne mystérieuse, avec des défis de plateforme difficiles et des thèmes de santé mentale.', NULL),
-(4, 'LONELY MOUNTAINS DOWNHILL', 'Jeu de course de descente de montagne où le joueur doit traverser des parcours en évitant les obstacles et en collectant des pièces.', NULL),
-(5, 'ROCKMAN 4', 'Jeu de plateforme d\'action où le joueur incarne le robot Mega Man pour vaincre les ennemis et récupérer leurs armes.', NULL),
-(6, 'ALEX KIDD IN MIRACLE WORLD DX', 'Alex Kidd in Miracle World DX est un jeu de plateforme classique remasterisé qui suit les aventures d\'Alex Kidd dans un monde rempli d\'énigmes, de pièges et de boss difficiles. Le but du jeu est d\'aider Alex Kidd à sauver le royaume de Radaxian de Janken le Grand, en combattant des ennemis, en collectant des pièces et en résolvant des énigmes tout au long de sa quête. Avec des graphismes améliorés et de nouvelles fonctionnalités, Alex Kidd in Miracle World DX est une expérience nostalgique pour les fans du jeu original et une découverte passionnante pour les nouveaux joueurs.', NULL),
-(7, 'THE LUCKY DIME CAPER', 'Dans The Lucky Dime Caper Starring Donald Duck, vous incarnez Donald Duck à la recherche de pièces de monnaie volées par le méchant Magica De Spell pour sauver ses neveux. Le but est de traverser différents niveaux remplis d\'ennemis et d\'obstacles tout en collectant des pièces et en résolvant des énigmes pour récupérer toutes les pièces volées.', NULL),
-(8, 'TEENAGE MUTANT NINJA TURTLES', 'Teenage Mutant Ninja Turtles est un jeu vidéo où l\'on incarne les célèbres Tortues Ninja pour combattre les ennemis et sauver leur ville. Le but est de vaincre le chef des méchants et restaurer la paix.', NULL),
-(9, 'RESIDENT EVIL 2 REMAKE', 'Resident Evil 2 Remake est un jeu de survival-horror en vue à la troisième personne, où le joueur incarne un des deux personnages principaux, Leon S. Kennedy ou Claire Redfield, dans leur lutte pour survivre contre des hordes de zombies et autres créatures infectées dans la ville de Raccoon City. Le but du jeu est de résoudre des énigmes, collecter des ressources et progresser à travers différents environnements afin de découvrir la source de l\'épidémie et mettre un terme à la menace virale.', NULL),
-(10, 'LITTLE BIG ADVENTURE', 'Little Big Adventure est un jeu d\'aventure sorti en 1994 où le joueur incarne Twinsen, un héros doté de pouvoirs spéciaux qui doit sauver sa planète du joug d\'un tyran maléfique. Le jeu se déroule dans un monde ouvert où le joueur doit explorer différents lieux, interagir avec les personnages non-joueurs, résoudre des énigmes et combattre des ennemis. Le but ultime est de vaincre le tyran pour sauver la planète et rétablir la paix.', NULL),
-(12, 'THE LION KING', NULL, NULL),
-(13, 'ELDEN RING', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `rankings`
---
-
-CREATE TABLE `rankings` (
-  `id` int NOT NULL,
-  `user_id` int DEFAULT NULL,
-  `game_id` int DEFAULT NULL,
-  `category_id` int DEFAULT NULL,
-  `time_seconds` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `runners`
---
-
-CREATE TABLE `runners` (
-  `runners_id` int NOT NULL,
-  `runners_alias` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+(1, 'CASTLEVANIA', 'Castlevania est une série de jeux d\'action-aventure gothique avec des éléments de plateforme, de combat et de puzzle. Le joueur y incarne un chasseur de vampires combattant des créatures surnaturelles et explore des châteaux sombres et labyrinthiques.', 'Castlevania_1_Nes.png'),
+(2, 'PORTAL', 'Portal est un jeu vidéo de puzzle développé par Valve Corporation. Le joueur utilise un pistolet à portails pour résoudre des énigmes dans des salles d\'essai contrôlées par une intelligence artificielle malveillante.', 'Portal.jpg'),
+(3, 'CELESTE', 'Celeste est un jeu vidéo de plateforme qui suit les aventures de Madeline alors qu\'elle escalade une montagne mystérieuse, avec des défis de plateforme difficiles et des thèmes de santé mentale.', 'Celeste.jpeg'),
+(4, 'LONELY MOUNTAINS DOWNHILL', 'Jeu de course de descente de montagne où le joueur doit traverser des parcours en évitant les obstacles et en collectant des pièces.', 'Lonely_Mountains_Downhill.jpg'),
+(5, 'ROCKMAN 4', 'Jeu de plateforme d\'action où le joueur incarne le robot Mega Man pour vaincre les ennemis et récupérer leurs armes.', 'Rockman_4.png'),
+(6, 'ALEX KIDD IN MIRACLE WORLD DX', 'Alex Kidd in Miracle World DX est un jeu de plateforme classique remasterisé qui suit les aventures d\'Alex Kidd dans un monde rempli d\'énigmes, de pièges et de boss difficiles. Le but du jeu est d\'aider Alex Kidd à sauver le royaume de Radaxian de Janken le Grand, en combattant des ennemis, en collectant des pièces et en résolvant des énigmes tout au long de sa quête. Avec des graphismes améliorés et de nouvelles fonctionnalités, Alex Kidd in Miracle World DX est une expérience nostalgique pour les fans du jeu original et une découverte passionnante pour les nouveaux joueurs.', 'Alex-kidd-in-miracle-world-dx.jpg'),
+(7, 'THE LUCKY DIME CAPER', 'Dans The Lucky Dime Caper Starring Donald Duck, vous incarnez Donald Duck à la recherche de pièces de monnaie volées par le méchant Magica De Spell pour sauver ses neveux. Le but est de traverser différents niveaux remplis d\'ennemis et d\'obstacles tout en collectant des pièces et en résolvant des énigmes pour récupérer toutes les pièces volées.', 'The_lucky_dime_caper.jpg'),
+(8, 'TEENAGE MUTANT NINJA TURTLES', 'Teenage Mutant Ninja Turtles est un jeu vidéo où l\'on incarne les célèbres Tortues Ninja pour combattre les ennemis et sauver leur ville. Le but est de vaincre le chef des méchants et restaurer la paix.', 'tmnt_nes_game_cover.jpg'),
+(9, 'RESIDENT EVIL 2 REMAKE', 'Resident Evil 2 Remake est un jeu de survival-horror en vue à la troisième personne, où le joueur incarne un des deux personnages principaux, Leon S. Kennedy ou Claire Redfield, dans leur lutte pour survivre contre des hordes de zombies et autres créatures infectées dans la ville de Raccoon City. Le but du jeu est de résoudre des énigmes, collecter des ressources et progresser à travers différents environnements afin de découvrir la source de l\'épidémie et mettre un terme à la menace virale.', 'Resident_Evil_2_remake.jpg'),
+(10, 'LITTLE BIG ADVENTURE', 'Little Big Adventure est un jeu d\'aventure sorti en 1994 où le joueur incarne Twinsen, un héros doté de pouvoirs spéciaux qui doit sauver sa planète du joug d\'un tyran maléfique. Le jeu se déroule dans un monde ouvert où le joueur doit explorer différents lieux, interagir avec les personnages non-joueurs, résoudre des énigmes et combattre des ennemis. Le but ultime est de vaincre le tyran pour sauver la planète et rétablir la paix.', 'LittleBigAdventure_PC.jpg'),
+(12, 'THE LION KING', 'Le jeu vidéo Le Roi Lion sur Super Nintendo est un jeu de plateforme publié en 1994 par Virgin Interactive. Il suit l\'histoire du film d\'animation Disney du même nom, où le joueur incarne le personnage de Simba, un lionceau qui doit traverser plusieurs niveaux pour devenir le roi de la savane.\r\n\r\nLe jeu comporte plusieurs niveaux différents, chacun ayant son propre ensemble d\'obstacles, d\'ennemis et de boss. Les niveaux incluent la jungle, les gorges, la caverne, la prairie, le cimetière des éléphants et le Rocher de la fierté.\r\n\r\nLe joueur peut attaquer en sautant sur les ennemis, en leur donnant des coups de griffe ou en utilisant des rugissements pour les paralyser. Il peut également collecter des bonus tels que des vies supplémentaires, des continues et des points bonus.\r\n\r\nLe jeu est connu pour ses graphismes colorés et détaillés, sa musique entraînante et son gameplay solide. Il a été salué pour sa fidélité à l\'histoire originale et est considéré comme l\'un des meilleurs jeux de plateforme jamais créés pour la Super Nintendo.', 'The_Lion_King_Genesis.png'),
+(13, 'ELDEN RING', 'Elden Ring est un jeu vidéo d\'action-RPG développé par FromSoftware et édité par Bandai Namco. Il est créé par Hidetaka Miyazaki, le créateur de la série de jeux Dark Souls. Le jeu se déroule dans un monde ouvert de fantasy sombre et mystérieux, avec des éléments de gameplay de la série Souls tels que la difficulté élevée, les combats exigeants et la mort permanente.\r\n\r\nLe joueur incarne un personnage personnalisable qui peut explorer le monde, combattre des ennemis, acquérir des compétences et interagir avec des personnages non-joueurs. Le jeu présente également des éléments de narration complexes, avec une histoire centrée sur un anneau mystique appelé Elden Ring.\r\n\r\nLe jeu est fortement attendu par les fans de la série Souls et de la fantasy en général, en raison de la réputation de Miyazaki pour la création de mondes de jeu immersifs et de gameplay difficile.', 'Eldenring_pc.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,20 +119,6 @@ INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `passwor
 (15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', NULL, '2023-04-11 07:34:45'),
 (16, 'AdministrateurG', 'administrateurg@gmail.com', '64350f0da5c64.jpg', '$2y$10$EOoYFoMAPnOTdVTrkfOFEu/O7an/FckzODiQOzovbhEJ1r65XJKuS', NULL, '2023-04-11 07:40:33');
 
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user_speedrun_runs`
---
-
-CREATE TABLE `user_speedrun_runs` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `game_title` varchar(255) NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `youtube_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -211,32 +173,10 @@ ALTER TABLE `games`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `rankings`
---
-ALTER TABLE `rankings`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `game_id` (`game_id`);
-
---
--- Index pour la table `runners`
---
-ALTER TABLE `runners`
-  ADD PRIMARY KEY (`runners_id`);
-
---
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user_speedrun_runs`
---
-ALTER TABLE `user_speedrun_runs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `game_title` (`game_title`);
 
 --
 -- Index pour la table `videos`
@@ -265,28 +205,10 @@ ALTER TABLE `games`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT pour la table `rankings`
---
-ALTER TABLE `rankings`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `runners`
---
-ALTER TABLE `runners`
-  MODIFY `runners_id` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT pour la table `user_speedrun_runs`
---
-ALTER TABLE `user_speedrun_runs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `videos`
@@ -304,13 +226,6 @@ ALTER TABLE `videos`
 ALTER TABLE `articles`
   ADD CONSTRAINT `fk_article_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_articles_user_id` FOREIGN KEY (`article_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `rankings`
---
-ALTER TABLE `rankings`
-  ADD CONSTRAINT `fk_rankings_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_rankings_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
