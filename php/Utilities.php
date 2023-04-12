@@ -94,13 +94,21 @@ class Utilities
     }
 
 
-    public function addNewVideo($table, $id, $title, $description, $video_url, $user_id = 0, $game_id = 0, $category_id = 0)
+    public function addNewVideo( $title, $video_url, $user_id = 0, $game_id = 0, $category_id = 0)
     {
-        $req = "INSERT INTO `".$table."`(`id`, `title`, `description`, `video_url`, `user_id`, `game_id`, `category_id`) 
-            VALUES (NULL ,'".$id."','".$title."', '".$description."', '".$video_url."', '".$user_id."', '".$game_id."', '".$category_id."');";
+        $req = "INSERT INTO `videos`(`id`, `title`, `description`, `video_url`, `user_id`, `game_id`, `category_id`) 
+            VALUES (NULL ,NULL,'".$title."', NULL, '".$video_url."', '".$user_id."', '".$game_id."', '".$category_id."');";
         
         $this->sql->query($req);
     }
+
+    public function addNewArticle($title,$content, $user_id)
+    {
+        $req = "INSERT INTO `articles`(`article_id`, `article_title`, `article_content`, `user_id`) VALUES (NULL,'".$title."','".$content."','".$user_id."')";
+        
+        $this->sql->query($req);
+    }
+
     public function addNewGame($title, $description, $gamePicturePath)
     {
         $req = "INSERT INTO `games`(`id`, `title`, `description`, `game_picture`) 

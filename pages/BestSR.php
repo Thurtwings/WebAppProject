@@ -45,7 +45,6 @@
     }
   </style> -->
 
-
 </head>
 
 <body class="videoCore">
