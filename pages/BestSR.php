@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.72.0">
-  <title>Album example · Bootstrap</title>
+  <title>Vidéos</title>
 
 
   <link rel="stylesheet" href="../css/style.css">
@@ -156,15 +156,17 @@
                   <iframe class="mx-auto" width="100%" height="225" src="<?php echo $value['video_url']; ?>" title="LITTLE BIG ADVENTURE (any%) en 30:13 par Blake_Faythe | SPEEDONS" frameborder="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                   
                   <h5 class="card-title mx-auto text-white text-center">
-                    <?php echo "<a class='text-white' href='game_details.php?game_id=".$value['game_id']."'>".$utils->Get("title", "games", "id", $value['game_id'])."</a>"."<br>"." en ".$utils->Get("run_time", "videos", "id", $value['id']); ?>
-</h5>
+                    <?php echo "<a class='text-white' href='game_details.php?game_id=".$value['game_id']."'>".$utils->Get("title", "games", "id", $value['game_id'])."</a>"."<br>"." en ".$utils->Get("run_time", "videos", "id", $value['id']); ?></h5>
 
-                  
-                <div class="card-body bg-success bg-opacity-75">
-                  <?php echo  "<a class='card-text text-white' href='user_details.php?user_id=".$value['user_id']."'>".$utils->Get("username", "users", "id", $utils->Get("user_id","videos","id", $value['id']));?></a>
-                    <small class="d-flex justify-content-end align-items-center"><a href=""><?php echo $value["category_speedrun"]  ?></a></small>
-                
-              </div>
+                  <div class="card-body bg-success bg-opacity-75 d-flex justify-content-between align-items-center">
+                      <a class="card-text text-white" href="user_details.php?user_id=<?php echo $value['user_id']; ?>">
+                          <?php echo $utils->Get("username", "users", "id", $utils->Get("user_id","videos","id", $value['id'])); ?>
+                      </a>
+                      <small class="text-white">
+                          <?php echo $value["category_speedrun"]; ?>
+                      </small>
+                  </div>
+
             </div>
       </div>
             <?php } ?>
