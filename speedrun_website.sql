@@ -3,7 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 12 avr. 2023 à 14:57
+
+
+-- Généré le : mer. 12 avr. 2023 à 12:22
+
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -29,7 +32,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `articles` (
   `article_id` int NOT NULL,
+
   `article_cover_picture_link` varchar(255) DEFAULT NULL,
+
   `article_title` varchar(255) NOT NULL,
   `article_content` text,
   `user_id` int NOT NULL
@@ -39,10 +44,12 @@ CREATE TABLE `articles` (
 -- Déchargement des données de la table `articles`
 --
 
+
 INSERT INTO `articles` (`article_id`, `article_cover_picture_link`, `article_title`, `article_content`, `user_id`) VALUES
 (2, 'article01Image.png', 'le speedrun kesako?!', 'Le speedrun est une pratique de jeu vidéo consistant à terminer un jeu aussi rapidement que possible. Les joueurs s\'entraînent pour atteindre des temps records en utilisant des techniques spécifiques, telles que des bugs ou des raccourcis, pour finir le jeu plus rapidement. <br><br>Le speedrun a connu une évolution rapide ces dernières années. Avec l\'essor des réseaux sociaux et des plateformes de streaming, de plus en plus de joueurs ont commencé à s\'intéresser à cette pratique. Les communautés en ligne se sont développées, permettant aux joueurs de partager des astuces et des techniques pour améliorer leurs temps. De plus, de nombreux événements de speedrun ont été organisés à travers le monde, attirant des milliers de spectateurs en ligne et en personne. <br><br>Le speedrun est devenu une pratique très compétitive, avec des records du monde très convoités et une forte culture de la rivalité entre les joueurs. Les jeux les plus populaires pour le speedrun sont souvent les jeux classiques de l\'ère des consoles, comme les jeux Super Mario Bros, The Legend of Zelda ou Sonic the Hedgehog.<br><br> Malgré cette popularité croissante, certains critiques ont mis en avant des inquiétudes concernant l\'utilisation de logiciels tiers pour aider les joueurs à améliorer leurs temps, ou le risque de causer des dommages au matériel de jeu. Cependant, la communauté du speedrun continue à prospérer et à se développer, avec de nouveaux jeux et des records du monde battus régulièrement. <br><br>', 16),
 (4, 'HowStartSR.png', 'Tuto: démarrer le speedrun', 'Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :<br><br>\n\n1.Choisissez un jeu : Tout d\'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s\'agir de n\'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.<br><br>\n\n2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d\'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.<br><br>\n\n3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.<br><br>\n\n4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.<br><br>\n\n5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.<br><br>\n\nEn suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N\'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !<br><br>', 2),
 (12, 'HowStartSR.png', 'Tuto: démarrer ', 'Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :<br><br>\r\n\r\n1.Choisissez un jeu : Tout d\'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s\'agir de n\'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.<br><br>\r\n\r\n2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d\'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.<br><br>\r\n\r\n3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.<br><br>\r\n\r\n4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.<br><br>\r\n\r\n5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.<br><br>\r\n\r\nEn suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N\'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !<br><br>', 2);
+
 
 -- --------------------------------------------------------
 
@@ -95,6 +102,7 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
+
 INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`) VALUES
 (2, 'AdministrateurS', 'thurtwings@gmail.com', '6435698872402.png', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', NULL, '2023-04-08 21:06:27'),
 (4, 'KILAYE', 'kilaye@gmail.com', '6434311b7bc71.jpg', '$2y$10$ZpLwRx/oxPGxpmtX6v5ztugThfDyht1100hgNVNc.U.DE7KtX1fb.', NULL, '2023-04-10 15:38:39'),
@@ -110,6 +118,7 @@ INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `passwor
 (14, 'Neetsel', 'neetsel@gmail.com', NULL, '$2y$10$VO0HfduINXYE4iNevrZKN.Y0TDxtZFAn6G1xHwTiUxQY14Trd/mqu', NULL, '2023-04-11 07:32:16'),
 (15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', NULL, '2023-04-11 07:34:45'),
 (16, 'AdministrateurG', 'administrateurg@gmail.com', '64350f0da5c64.jpg', '$2y$10$EOoYFoMAPnOTdVTrkfOFEu/O7an/FckzODiQOzovbhEJ1r65XJKuS', NULL, '2023-04-11 07:40:33');
+
 
 -- --------------------------------------------------------
 
@@ -185,7 +194,9 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
+
   MODIFY `article_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 
 --
 -- AUTO_INCREMENT pour la table `games`
