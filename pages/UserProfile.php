@@ -28,7 +28,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
 
         <div class="container-fluid">
             <form method="get">
-                <div class="row justify-content-center">
+                <div class="row">
                     <div class="col-sm-3 bg-success">
                         <ul class="list-group my-3">
                             <li class="list-group-item"><a href="#">Mon profil</a></li>
@@ -37,7 +37,6 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                             <li class="list-group-item"><a href="#">Mes temps</a></li>
                             <li class="list-group-item"><a href="#">Mes paramètres</a></li>
                         </ul>
-                    </div>
                 </div>
             </form>
                     <div class="col-9">

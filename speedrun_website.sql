@@ -1,4 +1,11 @@
-
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost
+-- Généré le : mer. 12 avr. 2023 à 12:22
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,35 +27,22 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `article_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `article_id` int NOT NULL,
+  `article_cover_picture_link` varchar(255) DEFAULT NULL,
   `article_title` varchar(255) NOT NULL,
   `article_content` text,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`article_id`),
-  KEY `fk_article_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `articles`
 --
 
-INSERT INTO `articles` (`article_id`, `article_title`, `article_content`, `user_id`) VALUES
-(2, 'le speedrun kesako?!', 'Le speedrun est une pratique de jeu vidéo consistant à terminer un jeu aussi rapidement que possible. Les joueurs s\'entraînent pour atteindre des temps records en utilisant des techniques spécifiques, telles que des bugs ou des raccourcis, pour finir le jeu plus rapidement. Le speedrun a connu une évolution rapide ces dernières années. Avec l\'essor des réseaux sociaux et des plateformes de streaming, de plus en plus de joueurs ont commencé à s\'intéresser à cette pratique. Les communautés en ligne se sont développées, permettant aux joueurs de partager des astuces et des techniques pour améliorer leurs temps. De plus, de nombreux événements de speedrun ont été organisés à travers le monde, attirant des milliers de spectateurs en ligne et en personne. Le speedrun est devenu une pratique très compétitive, avec des records du monde très convoités et une forte culture de la rivalité entre les joueurs. Les jeux les plus populaires pour le speedrun sont souvent les jeux classiques de l\'ère des consoles, comme les jeux Super Mario Bros, The Legend of Zelda ou Sonic the Hedgehog. Malgré cette popularité croissante, certains critiques ont mis en avant des inquiétudes concernant l\'utilisation de logiciels tiers pour aider les joueurs à améliorer leurs temps, ou le risque de causer des dommages au matériel de jeu. Cependant, la communauté du speedrun continue à prospérer et à se développer, avec de nouveaux jeux et des records du monde battus régulièrement. ', 16),
-(4, 'Tuto: démarrer le speedrun', 'Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :\r\n\r\n1.Choisissez un jeu : Tout d\'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s\'agir de n\'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.\r\n\r\n2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d\'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.\r\n\r\n3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.\r\n\r\n4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.\r\n\r\n5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.\r\n\r\nEn suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N\'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !', 2);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `game_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `articles` (`article_id`, `article_cover_picture_link`, `article_title`, `article_content`, `user_id`) VALUES
+(2, 'article01Image.png', 'le speedrun kesako?!', 'Le speedrun est une pratique de jeu vidéo consistant à terminer un jeu aussi rapidement que possible. Les joueurs s\'entraînent pour atteindre des temps records en utilisant des techniques spécifiques, telles que des bugs ou des raccourcis, pour finir le jeu plus rapidement. <br><br>Le speedrun a connu une évolution rapide ces dernières années. Avec l\'essor des réseaux sociaux et des plateformes de streaming, de plus en plus de joueurs ont commencé à s\'intéresser à cette pratique. Les communautés en ligne se sont développées, permettant aux joueurs de partager des astuces et des techniques pour améliorer leurs temps. De plus, de nombreux événements de speedrun ont été organisés à travers le monde, attirant des milliers de spectateurs en ligne et en personne. <br><br>Le speedrun est devenu une pratique très compétitive, avec des records du monde très convoités et une forte culture de la rivalité entre les joueurs. Les jeux les plus populaires pour le speedrun sont souvent les jeux classiques de l\'ère des consoles, comme les jeux Super Mario Bros, The Legend of Zelda ou Sonic the Hedgehog.<br><br> Malgré cette popularité croissante, certains critiques ont mis en avant des inquiétudes concernant l\'utilisation de logiciels tiers pour aider les joueurs à améliorer leurs temps, ou le risque de causer des dommages au matériel de jeu. Cependant, la communauté du speedrun continue à prospérer et à se développer, avec de nouveaux jeux et des records du monde battus régulièrement. <br><br>', 16),
+(4, 'HowStartSR.png', 'Tuto: démarrer le speedrun', 'Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :<br><br>\n\n1.Choisissez un jeu : Tout d\'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s\'agir de n\'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.<br><br>\n\n2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d\'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.<br><br>\n\n3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.<br><br>\n\n4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.<br><br>\n\n5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.<br><br>\n\nEn suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N\'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !<br><br>', 2),
+(12, 'HowStartSR.png', 'Tuto: démarrer ', 'Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :<br><br>\r\n\r\n1.Choisissez un jeu : Tout d\'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s\'agir de n\'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.<br><br>\r\n\r\n2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d\'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.<br><br>\r\n\r\n3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.<br><br>\r\n\r\n4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.<br><br>\r\n\r\n5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.<br><br>\r\n\r\nEn suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N\'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !<br><br>', 2);
 
 -- --------------------------------------------------------
 
@@ -60,10 +54,8 @@ CREATE TABLE `games` (
   `id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
-  `game_picture` varchar(320) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+  `game_picture` varchar(320) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `games`
@@ -82,7 +74,6 @@ INSERT INTO `games` (`id`, `title`, `description`, `game_picture`) VALUES
 (10, 'LITTLE BIG ADVENTURE', 'Little Big Adventure est un jeu d\'aventure sorti en 1994 où le joueur incarne Twinsen, un héros doté de pouvoirs spéciaux qui doit sauver sa planète du joug d\'un tyran maléfique. Le jeu se déroule dans un monde ouvert où le joueur doit explorer différents lieux, interagir avec les personnages non-joueurs, résoudre des énigmes et combattre des ennemis. Le but ultime est de vaincre le tyran pour sauver la planète et rétablir la paix.', NULL),
 (12, 'THE LION KING', NULL, NULL),
 (13, 'ELDEN RING', NULL, NULL);
-
 
 -- --------------------------------------------------------
 
@@ -121,30 +112,29 @@ CREATE TABLE `users` (
   `user_email` varchar(320) NOT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
   `password` char(60) NOT NULL,
+  `user_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `registration_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`) VALUES
-
-(2, 'AdministrateurS', 'thurtwings@gmail.com', '6435698872402.png', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', '2023-04-08 21:06:27'),
-(4, 'KILAYE', 'kilaye@gmail.com', '6434311b7bc71.jpg', '$2y$10$ZpLwRx/oxPGxpmtX6v5ztugThfDyht1100hgNVNc.U.DE7KtX1fb.', '2023-04-10 15:38:39'),
-(5, 'Janthe', 'janthe@gmail.com', NULL, '$2y$10$sspdXakOdTgYSxnn5VJVLeAtCV7SyqYDnlS5uYI7GCCzgVsE9zCom', '2023-04-11 07:07:52'),
-(6, 'Biiwix', 'biiwix@gmail.com', NULL, '$2y$10$BbCxEV4QAXu6O.DWVh7ozuUfk.Wst5FfbKDtEUym8U27rFkCB0RoK', '2023-04-11 07:13:16'),
-(7, 'Rolesafe', 'rolesafe@gmail.com', NULL, '$2y$10$TdMIBAsuGEY/ozRWlWcQJOPdbRL/p6vFsXiVgSIp/w/CwW/S9t0rm', '2023-04-11 07:16:44'),
-(8, 'Barrylesjambes', 'barrylesjambes@gmail.com', NULL, '$2y$10$tB0K7ZDAc.Q5A7Mp1sKQ3u.ru5uWA5Jv8cr0rES8DlhNqq9vgDjlK', '2023-04-11 07:19:54'),
-(9, 'Strackel', 'strackel@gmail.com', NULL, '$2y$10$9DyELpJ7W7pHeC4wtIdbKec7OQggkTmU2Vs7Eh2m.P/s7/EwsIx1y', '2023-04-11 07:23:35'),
-(10, 'Chachamaxx', 'chachamaxx@gmail.com', NULL, '$2y$10$3uNxkkkdgQQuONoU466Df.uWkEd8UIQASdov0vKFKC0LipPqAVqe6', '2023-04-11 07:26:25'),
-(11, 'LF712', 'lf712@gmail.com', NULL, '$2y$10$UO6Nqx7HRR/0unqupxLJ9uvEq8whEYuoL2GghmrUqrxyDeyUC2KAS', '2023-04-11 07:28:35'),
-(12, 'Petrichor', 'petrichor@gmail.com', NULL, '$2y$10$2d.w5m8iJu60e/uKVklrIO2G4MTJhUJISCdiUpOY63mrttxLNa8qK', '2023-04-11 07:29:35'),
-(13, 'Blake_Faythe', 'blakefaythe@gmail.com', NULL, '$2y$10$fBqnRK9kf8ahUn1WAbjJ3e0sf9GU2iNodjg1lXSQJAU/eJBfE1EA.', '2023-04-11 07:31:29'),
-(14, 'Neetsel', 'neetsel@gmail.com', NULL, '$2y$10$VO0HfduINXYE4iNevrZKN.Y0TDxtZFAn6G1xHwTiUxQY14Trd/mqu', '2023-04-11 07:32:16'),
-(15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', '2023-04-11 07:34:45'),
-(16, 'AdministrateurG', 'administrateurg@gmail.com', '64350f0da5c64.jpg', '$2y$10$EOoYFoMAPnOTdVTrkfOFEu/O7an/FckzODiQOzovbhEJ1r65XJKuS', '2023-04-11 07:40:33');
+INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`) VALUES
+(2, 'AdministrateurS', 'thurtwings@gmail.com', '6435698872402.png', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', NULL, '2023-04-08 21:06:27'),
+(4, 'KILAYE', 'kilaye@gmail.com', '6434311b7bc71.jpg', '$2y$10$ZpLwRx/oxPGxpmtX6v5ztugThfDyht1100hgNVNc.U.DE7KtX1fb.', NULL, '2023-04-10 15:38:39'),
+(5, 'Janthe', 'janthe@gmail.com', '64367c9051ff6.png', '$2y$10$sspdXakOdTgYSxnn5VJVLeAtCV7SyqYDnlS5uYI7GCCzgVsE9zCom', 'Speedrunner dans l\'âme!', '2023-04-11 07:07:52'),
+(6, 'Biiwix', 'biiwix@gmail.com', NULL, '$2y$10$BbCxEV4QAXu6O.DWVh7ozuUfk.Wst5FfbKDtEUym8U27rFkCB0RoK', NULL, '2023-04-11 07:13:16'),
+(7, 'Rolesafe', 'rolesafe@gmail.com', NULL, '$2y$10$TdMIBAsuGEY/ozRWlWcQJOPdbRL/p6vFsXiVgSIp/w/CwW/S9t0rm', NULL, '2023-04-11 07:16:44'),
+(8, 'Barrylesjambes', 'barrylesjambes@gmail.com', NULL, '$2y$10$tB0K7ZDAc.Q5A7Mp1sKQ3u.ru5uWA5Jv8cr0rES8DlhNqq9vgDjlK', NULL, '2023-04-11 07:19:54'),
+(9, 'Strackel', 'strackel@gmail.com', NULL, '$2y$10$9DyELpJ7W7pHeC4wtIdbKec7OQggkTmU2Vs7Eh2m.P/s7/EwsIx1y', NULL, '2023-04-11 07:23:35'),
+(10, 'Chachamaxx', 'chachamaxx@gmail.com', NULL, '$2y$10$3uNxkkkdgQQuONoU466Df.uWkEd8UIQASdov0vKFKC0LipPqAVqe6', NULL, '2023-04-11 07:26:25'),
+(11, 'LF712', 'lf712@gmail.com', NULL, '$2y$10$UO6Nqx7HRR/0unqupxLJ9uvEq8whEYuoL2GghmrUqrxyDeyUC2KAS', NULL, '2023-04-11 07:28:35'),
+(12, 'Petrichor', 'petrichor@gmail.com', NULL, '$2y$10$2d.w5m8iJu60e/uKVklrIO2G4MTJhUJISCdiUpOY63mrttxLNa8qK', NULL, '2023-04-11 07:29:35'),
+(13, 'Blake_Faythe', 'blakefaythe@gmail.com', NULL, '$2y$10$fBqnRK9kf8ahUn1WAbjJ3e0sf9GU2iNodjg1lXSQJAU/eJBfE1EA.', NULL, '2023-04-11 07:31:29'),
+(14, 'Neetsel', 'neetsel@gmail.com', NULL, '$2y$10$VO0HfduINXYE4iNevrZKN.Y0TDxtZFAn6G1xHwTiUxQY14Trd/mqu', NULL, '2023-04-11 07:32:16'),
+(15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', NULL, '2023-04-11 07:34:45'),
+(16, 'AdministrateurG', 'administrateurg@gmail.com', '64350f0da5c64.jpg', '$2y$10$EOoYFoMAPnOTdVTrkfOFEu/O7an/FckzODiQOzovbhEJ1r65XJKuS', NULL, '2023-04-11 07:40:33');
 
 -- --------------------------------------------------------
 
@@ -173,15 +163,9 @@ CREATE TABLE `videos` (
   `video_url` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
   `game_id` int DEFAULT NULL,
-   `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
+  `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
   `run_time` time NOT NULL
-
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `game_id` (`game_id`),
-  KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `videos`
@@ -206,11 +190,11 @@ INSERT INTO `videos` (`id`, `title`, `description`, `video_url`, `user_id`, `gam
 --
 
 --
--- Index pour la table `categories`
+-- Index pour la table `articles`
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `game_id` (`game_id`);
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`article_id`),
+  ADD KEY `fk_article_user_id` (`user_id`);
 
 --
 -- Index pour la table `games`
@@ -259,10 +243,10 @@ ALTER TABLE `videos`
 --
 
 --
--- AUTO_INCREMENT pour la table `categories`
+-- AUTO_INCREMENT pour la table `articles`
 --
-ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `articles`
+  MODIFY `article_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `games`
@@ -300,7 +284,6 @@ ALTER TABLE `user_speedrun_runs`
 ALTER TABLE `videos`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
-
 --
 -- Contraintes pour les tables déchargées
 --
@@ -313,25 +296,12 @@ ALTER TABLE `articles`
   ADD CONSTRAINT `fk_articles_user_id` FOREIGN KEY (`article_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `categories`
---
-ALTER TABLE `categories`
-  ADD CONSTRAINT `fk_categories_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `rankings`
 --
 ALTER TABLE `rankings`
   ADD CONSTRAINT `fk_rankings_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_rankings_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `videos`
---
-ALTER TABLE `videos`
-  ADD CONSTRAINT `fk_videos_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_videos_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
