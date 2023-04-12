@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost
--- Généré le : mer. 12 avr. 2023 à 07:57
--- Version du serveur : 8.0.27
--- Version de PHP : 7.4.26
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +13,30 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `speedrun_website`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `articles`
+--
+
+DROP TABLE IF EXISTS `articles`;
+CREATE TABLE IF NOT EXISTS `articles` (
+  `article_id` int NOT NULL AUTO_INCREMENT,
+  `article_title` varchar(255) NOT NULL,
+  `article_content` text,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`article_id`),
+  KEY `fk_article_user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `articles`
+--
+
+INSERT INTO `articles` (`article_id`, `article_title`, `article_content`, `user_id`) VALUES
+(2, 'le speedrun kesako?!', 'Le speedrun est une pratique de jeu vidéo consistant à terminer un jeu aussi rapidement que possible. Les joueurs s\'entraînent pour atteindre des temps records en utilisant des techniques spécifiques, telles que des bugs ou des raccourcis, pour finir le jeu plus rapidement. Le speedrun a connu une évolution rapide ces dernières années. Avec l\'essor des réseaux sociaux et des plateformes de streaming, de plus en plus de joueurs ont commencé à s\'intéresser à cette pratique. Les communautés en ligne se sont développées, permettant aux joueurs de partager des astuces et des techniques pour améliorer leurs temps. De plus, de nombreux événements de speedrun ont été organisés à travers le monde, attirant des milliers de spectateurs en ligne et en personne. Le speedrun est devenu une pratique très compétitive, avec des records du monde très convoités et une forte culture de la rivalité entre les joueurs. Les jeux les plus populaires pour le speedrun sont souvent les jeux classiques de l\'ère des consoles, comme les jeux Super Mario Bros, The Legend of Zelda ou Sonic the Hedgehog. Malgré cette popularité croissante, certains critiques ont mis en avant des inquiétudes concernant l\'utilisation de logiciels tiers pour aider les joueurs à améliorer leurs temps, ou le risque de causer des dommages au matériel de jeu. Cependant, la communauté du speedrun continue à prospérer et à se développer, avec de nouveaux jeux et des records du monde battus régulièrement. ', 16),
+(4, 'Tuto: démarrer le speedrun', 'Vous souhaitez démarrer le speedrun? On vous aide, voici quelques étapes de base pour commencer :\r\n\r\n1.Choisissez un jeu : Tout d\'abord, vous devez choisir le jeu que vous souhaitez speedrunner. Il peut s\'agir de n\'importe quel jeu, mais il est préférable de commencer par un jeu avec lequel vous êtes familier et que vous aimez jouer.\r\n\r\n2.Apprenez le jeu : Pour réussir un speedrun, vous devez être très familier avec le jeu. Prenez le temps de jouer au jeu plusieurs fois et d\'apprendre tous les niveaux, les ennemis et les objets. Regardez également des vidéos de speedruns existants pour voir comment les autres joueurs ont réussi.\r\n\r\n3.Trouvez des astuces : Les astuces sont des techniques qui permettent de terminer un jeu plus rapidement. Recherchez sur internet des astuces pour le jeu que vous avez choisi, regardez des vidéos de speedruns pour en apprendre davantage sur les astuces que les autres joueurs utilisent.\r\n\r\n4.Entraînez-vous : Le speedrun est une pratique qui exige beaucoup de temps et de pratique. Entraînez-vous en utilisant les astuces que vous avez apprises et essayez de battre votre propre temps à chaque fois que vous jouez.\r\n\r\n5.Utilisez des outils : Pour vous aider à améliorer votre temps de speedrun, utilisez des outils tels que des chronomètres et des compteurs de frames. Ces outils peuvent vous aider à suivre votre progression et à identifier les domaines dans lesquels vous pouvez vous améliorer.\r\n\r\nEn suivant ces étapes de base, vous pouvez commencer votre voyage dans le monde passionnant du speedrun. N\'oubliez pas de rester patient et persévérant, car le speedrun peut être un défi difficile mais extrêmement gratifiant. Bonne chance !', 2);
 
 -- --------------------------------------------------------
 
@@ -43,8 +60,10 @@ CREATE TABLE `games` (
   `id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
-  `game_picture` varchar(320) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `game_picture` varchar(320) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 --
 -- Déchargement des données de la table `games`
@@ -63,6 +82,7 @@ INSERT INTO `games` (`id`, `title`, `description`, `game_picture`) VALUES
 (10, 'LITTLE BIG ADVENTURE', 'Little Big Adventure est un jeu d\'aventure sorti en 1994 où le joueur incarne Twinsen, un héros doté de pouvoirs spéciaux qui doit sauver sa planète du joug d\'un tyran maléfique. Le jeu se déroule dans un monde ouvert où le joueur doit explorer différents lieux, interagir avec les personnages non-joueurs, résoudre des énigmes et combattre des ennemis. Le but ultime est de vaincre le tyran pour sauver la planète et rétablir la paix.', NULL),
 (12, 'THE LION KING', NULL, NULL),
 (13, 'ELDEN RING', NULL, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -104,11 +124,13 @@ CREATE TABLE `users` (
   `registration_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`) VALUES
+
 (2, 'AdministrateurS', 'thurtwings@gmail.com', '6435698872402.png', '$2y$10$GgkpH4fAshtVn2m73TZn6unBWkOhzaE/mpMmecUdL6AZjIAewFGz2', '2023-04-08 21:06:27'),
 (4, 'KILAYE', 'kilaye@gmail.com', '6434311b7bc71.jpg', '$2y$10$ZpLwRx/oxPGxpmtX6v5ztugThfDyht1100hgNVNc.U.DE7KtX1fb.', '2023-04-10 15:38:39'),
 (5, 'Janthe', 'janthe@gmail.com', NULL, '$2y$10$sspdXakOdTgYSxnn5VJVLeAtCV7SyqYDnlS5uYI7GCCzgVsE9zCom', '2023-04-11 07:07:52'),
@@ -151,9 +173,15 @@ CREATE TABLE `videos` (
   `video_url` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
   `game_id` int DEFAULT NULL,
-  `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
+   `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
   `run_time` time NOT NULL
+
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `game_id` (`game_id`),
+  KEY `category_id` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 --
 -- Déchargement des données de la table `videos`
@@ -272,9 +300,17 @@ ALTER TABLE `user_speedrun_runs`
 ALTER TABLE `videos`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
+
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `articles`
+--
+ALTER TABLE `articles`
+  ADD CONSTRAINT `fk_article_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_articles_user_id` FOREIGN KEY (`article_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `categories`
@@ -295,7 +331,7 @@ ALTER TABLE `rankings`
 ALTER TABLE `videos`
   ADD CONSTRAINT `fk_videos_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_videos_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
