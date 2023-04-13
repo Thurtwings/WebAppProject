@@ -15,7 +15,7 @@ $utils = new Utilities(0);
 <link rel="stylesheet" href="../css/style.css">
 
 <body>
-<div id="navbar-container"></div>x²
+<div id="navbar-container"></div>
 
 
 <div class="btn-group" role="group" aria-label="Basic example">
@@ -43,7 +43,7 @@ $utils = new Utilities(0);
 			<!-- Author name input -->
 			<div class="form-outline mb-4">
 				<input type="text" name="user_id" id="form4Example1" class="form-control" value=""/>
-				<label class="form-label" for="form4Example1">Auteur</label>
+				<label class="form-label" for="form4Example1">Auteur/id</label>
 			</div>
 
 			<!-- Title input -->

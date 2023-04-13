@@ -28,23 +28,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-  <!-- <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style> -->
-
+  
 </head>
 
 <body class="videoCore">
@@ -54,9 +38,6 @@
 
     <div class="container my-5 ">
     
-      <!-- <div class="card bg-warning card-border-danger">
-        <h1 class="art-shadow fw-bold text-center text-uppercase text-primary">Le coin des vidéos</h1>
-      </div> -->
       <div class="card mb-3">
   <img src="../img/fondTitreVideos.jpg" class="card-img-top" alt="Wild Landscape"/>
   <div class="card-body bg-light bg-opacity-25">
@@ -77,14 +58,18 @@
         ?>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
-                <!-- <h2>Titre jeu</h2>
-                <cite>auteur / type speedrun / temps</cite>  -->
-            
+
                 <div id="carousel-video" class="carousel slide mx-auto" data-mdb-ride="carousel">
                     
                 <div class="carousel-indicators">
                     <?php for ($i=0; $i < 10 ; $i++) { ?>
-                        <button type="button" data-mdb-target="#carousel-video" data-mdb-slide-to="<?php echo $i; ?>" <?php if ($i === 0) { ?>class="active" aria-current="true"<?php } ?> aria-label="Slide <?php echo $i + 1; ?>"></button>
+                        <button type="button" data-mdb-target="#carousel-video" data-mdb-slide-to="<?php echo $i; ?>" 
+                        <?php 
+                        if ($i === 0) 
+                        { ?>
+                          class="active" aria-current="true"
+                          <?php 
+                        } ?> aria-label="Slide <?php echo $i + 1; ?>"></button>
                     <?php } ?>
                 </div>
 

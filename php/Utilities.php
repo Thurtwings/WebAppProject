@@ -67,41 +67,6 @@ class Utilities
         }
     }
 
-
-
-    
-    /*public function addNewUser($username, $user_email, $profile_picture, $password, $isAdmin = 0)
-    {
-        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`, `is_admin`) 
-            VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NOW(), . '".$profile_picture."', $isAdmin);";
-        
-        $this->sql->query($req);
-    }
-
-
-    public function addNewVideo( $title, $video_url, $user_id = 0, $game_id = 0, $category_id = 0)
-    {
-        $req = "INSERT INTO `videos`(`id`, `title`, `description`, `video_url`, `user_id`, `game_id`, `category_id`) 
-            VALUES (NULL ,NULL,'".$title."', NULL, '".$video_url."', '".$user_id."', '".$game_id."', '".$category_id."');";
-        
-        $this->sql->query($req);
-    }
-
-    public function addNewArticle($title, $content, $user_id)
-    {
-        $req = "INSERT INTO `articles`(`article_id`, `article_title`, `article_content`, `user_id`) VALUES (NULL,'".$title."','".$content."','".$user_id."')";
-        echo ($req);
-        $this->sql->query($req);
-    }
-
-    public function addNewGame($title, $description, $gamePicturePath)
-    {
-        $req = "INSERT INTO `games`(`id`, `title`, `description`, `game_picture`) 
-            VALUES (NULL ,'".$title."','".$description."', '".$gamePicturePath."');";
-        
-        $this->sql->query($req);
-    }*/
-
     public function addNewUser($username, $user_email, $profile_picture, $password, $isAdmin = 0)
     {
         $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`, `is_admin`) 
@@ -118,13 +83,6 @@ class Utilities
         $this->sql->query($req);
     }
 
-/*    public function addNewArticle($title, $content, $user_id, $article_cover_picture_link = NULL)
-    {
-        $req = "INSERT INTO `articles`(`article_id`, `article_cover_picture_link`, `article_title`, `article_content`, `user_id`) 
-        VALUES (NULL ,'".$article_cover_picture_link."','".$title."','".$content."','".$user_id."')";
-        echo ($req);
-        $this->sql->query($req);
-    }*/
     public function addNewArticle($title, $content, $user_id, $article_cover_picture_link = NULL)
     {
         if (is_numeric($user_id))
