@@ -68,27 +68,12 @@ class Utilities
     }
 
 
-    public function getUserSpeedrunRuns($user_id) 
-    {
-        $req = "SELECT * FROM user_speedrun_runs WHERE user_id = " . $user_id;
-        $result = $this->sql->query($req);
-        $runs = array();
-        while ($row = $result->fetch()) {
-            $runs[] = array(
-                'id' => $row['id'],
-                'user_id' => $row['user_id'],
-                'game_title' => $row['game_title'],
-                'category' => $row['category'],
-                'youtube_link' => $row['youtube_link']
-            );
-        }
-        return $runs;
-    }
+
     
-    public function addNewUser($username, $user_email, $profile_picture, $password)
+    /*public function addNewUser($username, $user_email, $profile_picture, $password, $isAdmin = 0)
     {
-        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`) 
-            VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NOW());";
+        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `registration_time`, `is_admin`) 
+            VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NOW(), . '".$profile_picture."', $isAdmin);";
         
         $this->sql->query($req);
     }
@@ -102,10 +87,10 @@ class Utilities
         $this->sql->query($req);
     }
 
-    public function addNewArticle($title,$content, $user_id)
+    public function addNewArticle($title, $content, $user_id)
     {
         $req = "INSERT INTO `articles`(`article_id`, `article_title`, `article_content`, `user_id`) VALUES (NULL,'".$title."','".$content."','".$user_id."')";
-        
+        echo ($req);
         $this->sql->query($req);
     }
 
@@ -115,7 +100,61 @@ class Utilities
             VALUES (NULL ,'".$title."','".$description."', '".$gamePicturePath."');";
         
         $this->sql->query($req);
+    }*/
+
+    public function addNewUser($username, $user_email, $profile_picture, $password, $isAdmin = 0)
+    {
+        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`, `is_admin`) 
+        VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NULL, NOW(), $isAdmin);";
+
+        $this->sql->query($req);
     }
+
+    public function addNewVideo($title, $video_url, $user_id = 0, $game_id = 0, $category_speedrun = 'Any%', $run_time = '01:00:00')
+    {
+        $req = "INSERT INTO `videos`(`id`, `title`, `description`, `video_url`, `user_id`, `game_id`, `category_speedrun`, `run_time`) 
+        VALUES (NULL ,'".$title."', NULL, '".$video_url."', '".$user_id."', '".$game_id."', '".$category_speedrun."', '".$run_time."');";
+
+        $this->sql->query($req);
+    }
+
+/*    public function addNewArticle($title, $content, $user_id, $article_cover_picture_link = NULL)
+    {
+        $req = "INSERT INTO `articles`(`article_id`, `article_cover_picture_link`, `article_title`, `article_content`, `user_id`) 
+        VALUES (NULL ,'".$article_cover_picture_link."','".$title."','".$content."','".$user_id."')";
+        echo ($req);
+        $this->sql->query($req);
+    }*/
+    public function addNewArticle($title, $content, $user_id, $article_cover_picture_link = NULL)
+    {
+        if (is_numeric($user_id))
+        {
+            $req = "INSERT INTO `articles`(`article_id`, `article_cover_picture_link`, `article_title`, `article_content`, `user_id`) 
+    VALUES (NULL ,'".$article_cover_picture_link."','".$title."','".$content."',".$user_id.")";
+            if ($this->sql->query($req))
+            {
+                echo "L'article a été ajouté avec succès !";
+            } else {
+                $error_info = $this->sql->errorInfo();
+                echo "Erreur lors de l'ajout de l'article : " . $error_info[2];
+            }
+        }
+        else
+        {
+            echo "Invalid user id";
+        }
+    }
+
+
+
+    public function addNewGame($title, $description, $game_picture)
+    {
+        $req = "INSERT INTO `games`(`id`, `title`, `description`, `game_picture`) 
+        VALUES (NULL ,'".$title."','".$description."', '".$game_picture."');";
+
+        $this->sql->query($req);
+    }
+
     public function addNewCategory($name, $game_id)
     {
         $req = "INSERT INTO `categories`(`id`, `name`, `game_id`) 

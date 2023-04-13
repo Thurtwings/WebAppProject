@@ -1,5 +1,5 @@
 <?php
-
+/* 
 require_once('../php/Utilities.php');
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -56,8 +56,79 @@ if(isset($_POST['execute']))
     exit();
 }
 
+ */
 
-?>
+
+
+require_once('../php/Utilities.php');
+
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$utils = new Utilities($id);
+
+if(isset($_POST['execute']))
+{
+    // Handle file upload
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK && $_FILES['profile_picture']['size'] > 0) 
+    {
+        // Check if user already has a profile picture
+        $old_file_path = $utils->Get("profile_picture", 'users', 'id', $id);
+        if ($old_file_path !== null) {
+            // Remove old file from directory
+            $old_file_path = '../img/UsersProfilePictures/' . $old_file_path;
+            if (file_exists($old_file_path)) {
+                unlink($old_file_path);
+            }
+        }
+        
+        $file_name = $_FILES['profile_picture']['name'];
+        $file_tmp = $_FILES['profile_picture']['tmp_name'];
+        $file_size = $_FILES['profile_picture']['size'];
+        $file_type = $_FILES['profile_picture']['type'];
+        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        
+        $allowed_extensions = array('jpg', 'jpeg', 'png');
+
+        if (in_array($file_ext, $allowed_extensions) === false) 
+        {
+            die('Extension de fichier non autorisée.');
+        }
+        
+        $upload_path = '../img/UsersProfilePictures/';
+        $new_file_name = uniqid() . '.' . $file_ext;
+        move_uploaded_file($file_tmp, $upload_path . $new_file_name);
+        $new_file_path = $new_file_name;
+        
+        // Update database with new profile picture filename
+        $utils->Set('users' ,'profile_picture', 'id', $id, $new_file_path);
+    }
+
+    // Update other fields
+    $update_password = false;
+    foreach($_POST as $key => $value)
+    {
+        if($key != "execute" && $key != "profile_picture" ) 
+        {
+            if ($utils->Get($key, 'users', 'id', $id) != $value) 
+            {
+                $utils->Set('users' ,$key, 'id', $id, $value);
+            }
+        } 
+        
+    }
+
+    if (!$update_password) 
+    {
+        header("Location: ../php/UpdateProfile.php?id=$id");
+        exit();
+    }
+
+    header("Location: ../php/UserProfile.php?id=$id");
+    exit();
+}
+
+
+
+?> 
 
 
 <!DOCTYPE html>
@@ -93,7 +164,7 @@ if(isset($_POST['execute']))
                         <div class="card-body text-center">
                         <?php  if($utils->Get("profile_picture", 'users', 'id', $id) !== null)
                             {?>
-                            <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $id); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
+                                <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $id); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture"">
                             <?php } 
                             else 
                             {?>

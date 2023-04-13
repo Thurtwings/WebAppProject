@@ -72,7 +72,7 @@
                                             
                                             <p class="card-text article-text text-white" style="text-align:justify"><?php echo $value['article_content']; ?></p>
 
-                                            <a href="#article-text" class="btn btn-primary btn-lire-article">Lire l'article</a>
+                                            <a href="#article-text" class="btn btn-primary btn-lire-article">Lire article</a>
                                             <small class="d-flex justify-content-end text-white fs-6"><a  href="user_details.php?user_id=<?php echo $value['user_id'] ?>" class="text-dark fw-bold"><?php echo  $utils->Get("username", "users", "id", $utils->Get("user_id","articles","article_id", $value['article_id']) );?></a></small>
                                         </div>
                                     </div>
@@ -99,11 +99,11 @@
 
                             if (articleText.style.display === "none") {
                                 articleText.style.display = "block";
-                                this.textContent = "Réduire l'article";
+                                this.textContent = "Réduire article";
                                 this.nextElementSibling.style.display = "inline-block";
                             } else {
                                 articleText.style.display = "none";
-                                this.textContent = "Lire l'article";
+                                this.textContent = "Lire article";
                                 this.nextElementSibling.style.display = "none";
                             }
                         });

@@ -34,8 +34,9 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                             <li class="list-group-item"><a href="#">Mon profil</a></li>
                             <li class="list-group-item"><a href="../php/UpdateProfile.php?id=<?php echo $_SESSION['user_id']; ?>">Modifier mes informations</a></li>
                             <li class="list-group-item"><a href="#user_videos">Mes vidéos</a></li>
-                            <li class="list-group-item"><a href="#">Mes temps</a></li>
-                            <li class="list-group-item"><a href="#">Mes paramètres</a></li>
+                            <li class="list-group-item"><a href="#user_times">Mes temps</a></li>
+                            <li class="list-group-item"><a href="#user_times">Mes articles</a></li>
+                            <li class="list-group-item"><a href="#user_articles">Mes paramètres</a></li>
                         </ul>
                 </div>
             </form>
@@ -94,8 +95,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row mt-5 d-flex justify-content-center" id="user_times">
+                        <div class="row mt-5 d-flex justify-content-center" id="user_times">
                             <div class="col-lg-10 col-mg-12">
                                 <div class="card">
                                     <div class="card-body text-center">
@@ -104,13 +104,64 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                                 </div>
                             </div>
                             </div>
-                
+                        <div class="row mt-5 d-flex justify-content-center" id="user_articles">
+                        <div class="col-lg-3 col-mg-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h2><u>Mes articles</u></h2>
+                                    <?php
+                                        foreach ($utils->SelectAll('articles') as $key => $value) 
+                                        {
+                                            if ($value["user_id"] === $_SESSION['user_id']) 
+                                            { ?>
+                                                <div class="card my-4 bg-success bg-opacity-75">
+                                                    <img src="../img/<?php echo $value['article_cover_picture_link']; ?>" class="card-img-top" alt="Image d'illustration" id="<?php echo $value['article_id']; ?>">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title fs-3 fw-bold text-white" ><?php echo $value['article_title']; ?></h5>
+                                                        
+                                                        <p class="card-text article-text text-white" style="text-align:justify"><?php echo $value['article_content']; ?></p>
+
+                                                        <a href="#article-text" class="btn btn-primary btn-lire-article">Lire l'article</a>
+                                                    </div>
+                                                </div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                    <?php   }  
+                                        }
+                                    ?>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    // On cache le texte de l'article au chargement de la page
+    document.querySelectorAll(".article-text").forEach(function(element) {
+        element.style.display = "none";
+    });
 
+    // On ajoute un gestionnaire d'événement sur tous les boutons "Lire l'article"
+    document.querySelectorAll(".btn-lire-article").forEach(function(bouton) {
+        bouton.addEventListener("click", function() {
+            var articleText = this.parentNode.querySelector(".article-text");
 
+            if (articleText.style.display === "none") {
+                articleText.style.display = "block";
+                this.textContent = "Réduire l'article";
+                this.nextElementSibling.style.display = "inline-block";
+            } else {
+                articleText.style.display = "none";
+                this.textContent = "Lire l'article";
+                this.nextElementSibling.style.display = "none";
+            }
+        });
+    });
+</script>
         <script type="text/javascript" src="../js/navbar_js.js"></script>
         <script type="text/javascript" src="../js/footer_js.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
