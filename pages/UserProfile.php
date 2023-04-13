@@ -15,6 +15,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -22,14 +23,14 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
         <title>Mon profil</title>
     </head>
     <body>
-        <div id="navbar-container">
-            
-        </div>
+        <div id="navbar-container"></div>
 
+        <main class="bg-image" style="background-image: url('../img/AccueilFond.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" height: 100vh;> 
+        
         <div class="container-fluid">
             <form method="get">
                 <div class="row">
-                    <div class="col-sm-3 bg-success">
+                    <div class="col-sm-3">
                         <ul class="list-group my-3">
                             <li class="list-group-item"><a href="#">Mon profil</a></li>
                             <li class="list-group-item"><a href="../php/UpdateProfile.php?id=<?php echo $_SESSION['user_id']; ?>">Modifier mes informations</a></li>
@@ -130,15 +131,21 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                                     <?php   }  
                                         }
                                     ?>
-                                    
                             </div>
                         </div>
+                        <br><br>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </main>
 </div>
+
+
+
+
+
 <script>
     // On cache le texte de l'article au chargement de la page
     document.querySelectorAll(".article-text").forEach(function(element) {
