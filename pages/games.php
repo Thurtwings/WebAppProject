@@ -66,7 +66,7 @@
                             <h5 class="card-title text-center text-uppercase fw-bold game-title text-white"><?php echo $value['title']; ?></h5>
 
                             <p class="card-text game_description text-white" style="text-align:justify"><?php echo $value['description']; ?></p>
-                            <a href="#game_description" class="btn btn-primary btn-lire-game_description align-self-center">Lire l'article</a>
+                            <a href="#game_description" class="btn bg-success bg-gradient btn-lire-game_description align-self-center text-white">Lire résumé</a>
                         </div>
                     </div>
                 </div>
@@ -93,12 +93,12 @@
             if (resumeText.style.display === "none") {
                 resumeText.style.display = "block";
                 titleText.textContent = titleText.getAttribute('data-full-title');
-                this.textContent = "Réduire l'article";
+                this.textContent = "Réduire résumé";
                 reduireBtn.style.display = "inline-block";
             } else {
                 resumeText.style.display = "none";
                 titleText.textContent = titleText.getAttribute('data-truncated-title');
-                this.textContent = "Lire l'article";
+                this.textContent = "Lire résumé";
                 reduireBtn.style.display = "none";
             }
         });
