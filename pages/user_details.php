@@ -3,7 +3,7 @@ session_start();
 require_once("../php/Utilities.php");
 $utils = new Utilities(0);
 $idUserToDisplay = $_GET['user_id'];
-$_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_id']);
+
 
 ?>
 

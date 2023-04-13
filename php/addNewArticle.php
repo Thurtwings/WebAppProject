@@ -1,16 +1,27 @@
 <?php 
 require_once("../php/Utilities.php");
-	if(isset($_POST['SubmitInsert'])) {
-		$monObj = new Utilities(0);
-		$monObj->addNewArticle($_POST['article_title'], $_POST['article_content'], 16);
+require_once("../GoToThePage.php");
 
+$utils = new Utilities(0);
+
+	if(isset($_POST['SubmitInsert'])) 
+	{
+		$utils->addNewArticle($_POST['article_title'], $_POST['article_content'], $_POST['user_id']);
 	}
 
 ?>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/style.css">
-<a href="../php/addNewVideo.php">Nouvelle vidéo</a>
+
+<body>
+<div id="navbar-container"></div>x²
+
+
+<div class="btn-group" role="group" aria-label="Basic example">
+		<a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary">Nouvelle vidéo</a>
+        <a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary"> Ajouter Jeux</a>
+      </div>
 	<!-- Formulaire de création -->
 	<div class="mx-auto" style="width: 500px">
 		
@@ -45,8 +56,7 @@ require_once("../php/Utilities.php");
 			<div class="form-outline mb-4">
 				<textarea class="form-control" name="article_content" id="form4Example3" rows="4"></textarea>
 				<label class="form-label" for="form4Example3">Contenu</label>
-			</div>
-
+            </div>
 			<!-- Submit button -->
 			<input type="submit" value="Enregistrer" name="SubmitInsert" class="btn btn-primary btn-block mb-4"/>
 		</form>
@@ -55,5 +65,5 @@ require_once("../php/Utilities.php");
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-
+<script type="text/javascript" src="../js/navbar_js.js"></script>
 </body>	

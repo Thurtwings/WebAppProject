@@ -47,7 +47,7 @@
 
 </head>
 
-<body class="videoCore">
+<body class="games">
 <div id="navbar-container"></div>
   
   <main class="bg-image"style="background-image: url('../img/backgroundMinecraft.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" height: 100vh;>
@@ -67,56 +67,78 @@
     
   </div>
 </div>
-      
-
         <?php 
         for ($i=0; $i < 2 ; $i++) 
         { 
             echo "<br>";
         }
         ?>
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-            </div>
-        
-    
 
-
+            
 <!-- Cards -->
-    <div class="album py-5 bg-success bg-opacity-50">
-      <div class="container">
-
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <?php 
-            foreach ($utils->SelectAll('games') as $key => $value) 
-            {
-              ?>
-
-            <div class="col">
-              <div class="card shadow-sm bg-success bg-opacity-75">
-
-                <img src="../img/Games/<?php echo $value["game_picture"]; ?>" alt="image du jeu">
-                <h4><?php  echo $value['title'];  ?></h4>
-                <p ><?php  echo $value['description'];  ?></p>
-                  
-
+<div class="album py-5 bg-success bg-opacity-50">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+        <?php 
+        foreach ($utils->SelectAll('games') as $key => $value) 
+        {
+        ?>
+          <div class="col">
+            <div class="card mdb-card shadow-sm">
+              <div class="view overlay">
+                <img src="../img/Games/<?php echo $value["game_picture"]; ?>" class="card-img-top" alt="image du jeu" height="300">
               </div>
+              <div class="card-body">
+                <h4 class="card-title text-center text-uppercase fw-bold"><?php echo $value['title']; ?></h4>
+                <p class="card-text game_description"><?php echo $value['description']; ?></p>
+                <a href="#game_description" class="btn btn-primary btn-lire-game_description">Lire l'article</a>
+              </div>
+              
             </div>
-            <?php } ?>
+          </div>
+        <?php 
+        } 
+        ?>
+      </div>
+    </div>
+  </div>
+
+
           
 
   </main>
+  <script>
+    // On cache le texte de l'article au chargement de la page
+    document.querySelectorAll(".game_description").forEach(function(element) 
+    {
+        element.style.display = "none";
+    });
+    // On ajoute un gestionnaire d'événement sur tous les boutons "Lire l'article"
+    document.querySelectorAll(".btn-lire-game_description").forEach(function(bouton) 
+    {
+        bouton.addEventListener("click", function() 
+        {
+            var resumeText = this.parentNode.querySelector(".game_description");
 
-  
-  </div>
+            if (resumeText.style.display === "none") 
+            {
+              resumeText.style.display = "block";
+                this.textContent = "Réduire le résumé";
+                this.nextElementSibling.style.display = "inline-block";
+            } 
+            else 
+            {
+              resumeText.style.display = "none";
+                this.textContent = "Lire résumé";
+                this.nextElementSibling.style.display = "none";
+            }
+        });
+    });
+</script>
 
    
-
-  </footer>
-
-   
   
-<script src="https://unpkg.com/css-doodle@0.34.8/css-doodle.min.js"></script>
+
 <script src="../js/navbar_js.js"></script>
 <script src="../js/footer_js.js"></script>
 <script src="../js/carousel.js"></script>
