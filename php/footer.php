@@ -29,7 +29,6 @@ session_start();
       <li><a href="#" class=" text-black">Politique de confidentialité</a></li>
       <li><a href="#" class=" text-black">Droits d'auteur</a></li>
       <li><a href="#" class=" text-black">Crédits</a></li>
-      <li><a href="#" class=" text-black">Conditions d'utilisation</a></li>
     </ul>
   </div>
 
@@ -59,19 +58,19 @@ session_start();
     
 </ul>
 <div class="text-center pb-3">
-    <a href="https://www.facebook.com/" class="me-4 text-reset">
+    <a href="https://www.facebook.com/" class="me-4 text-reset" target="_blank">
         <i class="fab fa-facebook-f"></i>
     </a>
-    <a href="https://twitter.com/" class="me-4 text-reset">
+    <a href="https://twitter.com/" class="me-4 text-reset" target="_blank">
         <i class="fab fa-twitter"></i>
     </a>
-    <a href="https://www.instagram.com/" class="me-4 text-reset">
+    <a href="https://www.instagram.com/" class="me-4 text-reset" target="_blank">
         <i class="fab fa-instagram"></i>
     </a>
-    <a href="https://www.linkedin.com/" class="me-4 text-reset">
+    <a href="https://www.linkedin.com/" class="me-4 text-reset" target="_blank">
         <i class="fab fa-linkedin"></i>
     </a>
-    <a href="https://github.com/Thurtwings/WebAppProject" class="me-4 text-reset">
+    <a href="https://github.com/Thurtwings/WebAppProject" class="me-4 text-reset" target="_blank">
         <i class="fab fa-github"></i>
     </a>
 </div>

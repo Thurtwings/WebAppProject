@@ -14,14 +14,15 @@ $idUserToDisplay = $_GET['user_id'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/style.css">
     <title> Profil publique </title>
 </head>
 <body>
     <div id="navbar-container"></div>
-    
+    <main class="bg-image" style="background-image: url('../img/AccueilFond.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" height: 100vh;>
     <div class="container my-5">
         <div class="text-center">
-            <h1 class="mb-4">Page de <?php echo $utils->Get('username', 'users', 'id', $idUserToDisplay); ?></h1>
+            <h1 class="mb-4 text-white">Page de <?php echo $utils->Get('username', 'users', 'id', $idUserToDisplay); ?></h1>
 
             <?php  
                 if($utils->Get("profile_picture", 'users', 'id', $idUserToDisplay) !== null)
@@ -38,12 +39,12 @@ $idUserToDisplay = $_GET['user_id'];
 
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title"><u>Qui suis-je?</u></h3>
+                <h3 class="card-title text-center">Qui suis-je?</h3>
                 <p class="card-text"><?php echo $utils->Get('user_description', 'users', 'id', $idUserToDisplay);?></p>
             </div>
         </div>
 
-        <h3 class="mt-5 mb-3">Mes runs</h3>
+        <h3 class="mt-5 mb-3 text-white">Mes runs</h3>
         <div class="row">
             <?php  
                 foreach ($utils->SelectAll("videos") as $key => $value) 
@@ -64,7 +65,7 @@ $idUserToDisplay = $_GET['user_id'];
         <?php   }?>
         </div>
 
-        <h3 class="mt-5 mb-3">Les articles que j'ai écrit</h3>
+        <h3 class="mt-5 mb-3 text-white">Mes articles</h3>
         <div class="row">
             <?php  
                 foreach ($utils->SelectAll("articles") as $key => $value) 
@@ -73,9 +74,10 @@ $idUserToDisplay = $_GET['user_id'];
                     {?>
                         <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                             <div class="card shadow-sm h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $utils->Get("article_title", "articles", "user_id", $idUserToDisplay); ?></h5>
-                                    <a href="articles.php#<?php echo $value['article_id']; ?>" class="btn btn-primary">Lire l'article</a>
+                                <img src="../img/<?php echo $value['article_cover_picture_link']; ?>" class="card-img-top" alt="Image d'illustration" id="<?php echo $value['article_id']; ?>">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <h5 class="card-title text-center"><?php echo $utils->Get("article_title", "articles", "user_id", $idUserToDisplay); ?></h5>
+                                    <a href="articles.php#<?php echo $value['article_id']; ?>" class="btn btn-primary justify-content-center align-self-center">Lire l'article</a>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +86,7 @@ $idUserToDisplay = $_GET['user_id'];
                 }
             ?>
         </div>
+    </main>            
     </div>
 
     <script type="text/javascript" src="../js/navbar_js.js"></script>

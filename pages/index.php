@@ -45,7 +45,7 @@ include("../referencement.php");
 
         <br><br>
             
-            <h1 class="FontCustom text-danger display-1 text-center">RushRunners</h1>
+            <h1 class="FontCustom text-danger display-1 text-center bg-dark fw-bold">RushRunners</h1>
 
             <br><br>
 
