@@ -74,8 +74,8 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                                             if($value['user_id'] == $_SESSION['user_id'])
                                             {?>
                                                 <div class="col-sm-12 col-md-11 col-lg-10">
-                                                    <div class="card shadow-sm">
-                                                        <div class="card-body">
+                                                    <div class="card shadow-sm ">
+                                                        <div class="card-body ">
                                                             <div class="embed-responsive embed-responsive-16by9">
                                                                 <iframe class="embed-responsive-item" src="<?php echo $value['video_url']; ?>" title="<?php echo $value['title']; ?>" allowfullscreen></iframe>
                                                             </div>
@@ -106,7 +106,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                             </div>
                             </div>
                         <div class="row mt-5 d-flex justify-content-center" id="user_articles">
-                        <div class="col-lg-3 col-mg-4">
+                        <div class="col-lg-10 col-mg-4">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <h2><u>Mes articles</u></h2>
