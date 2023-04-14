@@ -106,7 +106,7 @@ $_SESSION['user_name'] = $utils->Get("username", 'users', 'id', $_SESSION['user_
                             </div>
                             </div>
                         <div class="row mt-5 d-flex justify-content-center" id="user_articles">
-                        <div class="col-lg-3 col-mg-4">
+                        <div class="col-lg-10 col-mg-12">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <h2><u>Mes articles</u></h2>
