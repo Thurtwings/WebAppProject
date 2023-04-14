@@ -55,21 +55,21 @@ include("../referencement.php");
                 <div class="card card bg-success bg-opacity-50">
                     <img src="../img/SpeedRun04.webp" class="card-img-top" alt="StreetFighterOnTv"/>
                     <div class="card-body">
-                    <h3 class="card-title text-center text-white">Les articles</h3>
+                    <h3 class="card-title text-center text-white"><a href="<?php echo $ARTICLES; ?>"class="text-white">Les articles</h3></a>
                     <p class="card-text text-center text-white fs-6">Retrouvez nos articles sur le Speedrun</p>
                     </div>
                 </div>
                 <div class="card card bg-success bg-opacity-50">
                     <img src="../img/SpeedRun02.jpg" class="card-img-top" alt="ComboKeyboardJoystick"/>
                     <div class="card-body">
-                    <h3 class="card-title text-center text-white">Les jeux</h3>
+                    <h3 class="card-title text-center text-white"><a href="<?php echo $GAMES; ?>"class="text-white">Les jeux</h3></a>
                     <p class="card-text text-center text-white fs-6">Toutes les infos sur les jeux speedrunné</p>
                     </div>
                 </div>
                 <div class="card card bg-success bg-opacity-50">
                     <img src="../img/Speedrun03.jpg" class="card-img-top" alt="SuperMarioOnTv"/>
                     <div class="card-body">
-                    <h3 class="card-title text-center text-white">Les vidéos</h3>
+                    <h3 class="card-title text-center text-white"><a href="<?php echo $BEST_SPEEDRUNS; ?>" class="text-white">Les vidéos</h3></a>
                     <p class="card-text text-center text-white fs-6">Les vidéos des meilleurs Speedrun</p>
                     </div>
                 </div>
