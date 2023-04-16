@@ -8,7 +8,8 @@
     
     //pages
     $BACKOFFICE = '../pages/Backoffice.php';
-    
+    $NEW_STAFF_MEMBER = '../php/setRole.php';
+    $SET_STATUS = '../php/setStatus.php';
     $BEST_SPEEDRUNS = '../pages/BestSR.php';
     $GAMES = '../pages/games.php';
     $CONTACT = '../pages/Contact.php';

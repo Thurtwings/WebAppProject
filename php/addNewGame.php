@@ -1,7 +1,8 @@
 <?php 
 require_once("../php/Utilities.php");
 require_once("../GoToThePage.php");
-	if(isset($_POST['SubmitInsert'])) {
+	if(isset($_POST['SubmitInsert'])) 
+	{
 		$monObj = new Utilities(0);
 		$monObj->addNewGame($_POST['article_title'], $_POST['article_content'], 16);
 
@@ -14,10 +15,10 @@ require_once("../GoToThePage.php");
 <body>
 <div id="navbar-container"></div>
 
-	<div class="btn-group" role="group" aria-label="Basic example">
-        <a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary"> Ajouter Vidéos </a>
-        <a href="<?php echo $NEW_ARTICLE; ?>" class="btn btn-primary"> Ajouter Articles</a>
-    </div>
+<a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary m-1"> Ajouter Vidéos </a>
+<a href="<?php echo $NEW_ARTICLE; ?>" class="btn btn-primary m-1"> Ajouter Articles</a>
+<a href="<?php echo $NEW_STAFF_MEMBER; ?>" class="btn btn-warning m-1"> Modifier le rôle d'un membrer</a>
+	
 	<!-- Formulaire de création -->
 	<div class="mx-auto" style="width: 500px">
 		

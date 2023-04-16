@@ -16,10 +16,11 @@ require_once("../GoToThePage.php");
 
 <body>
 	<div id="navbar-container"></div>
-	<div class="btn-group" role="group" aria-label="Basic example">
-        <a href="<?php echo $NEW_ARTICLE; ?>" class="btn btn-primary"> Ajouter Articles</a>
-        <a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary"> Ajouter Jeux</a>
-      </div>
+	
+        <a href="<?php echo $NEW_ARTICLE; ?>" class="btn btn-primary m-1"> Ajouter Articles</a>
+        <a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary m-1"> Ajouter Jeux</a>
+		<a href="<?php echo $NEW_STAFF_MEMBER; ?>" class="btn btn-warning m-1"> Modifier le rôle d'un membrer</a>
+     
 	<!-- Formulaire de création -->
 	<div class="mx-auto" style="width: 500px">
 		

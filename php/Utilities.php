@@ -3,17 +3,31 @@
 class Utilities
 {
     # Variables
-    private $table = "";
+    
     public $index = "";
     public $sql ="";
     
     # Constructeur Syntaxe exclusive __construct
     public function __construct($id)
+{
+    $this->index = $id;
+    
+    $dsn = 'mysql:host=localhost;dbname=speedrun_website';
+    $username = 'root';
+    $password = '';
+    
+    try 
     {
-        $this->index = $id;
-        $this->sql = new PDO('mysql:host=localhost;dbname=speedrun_website', 'root', 'root1234');
-
+        // Try connecting without a password
+        $this->sql = new PDO($dsn, $username, $password);
+    } 
+    catch (PDOException $e) 
+    {
+        // If the first attempt fails, try with the password "root1234"
+        $password = 'root1234';
+        $this->sql = new PDO($dsn, $username, $password);
     }
+}
 
     public function SelectAll($table)
     {
@@ -24,18 +38,20 @@ class Utilities
         return $tlbresult;
     }
 
-    public function FetchOptions($column)
+    public function FetchOptions($column, $table)
     {
         $options = [];
         
-            $req = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '".$this->table."' AND COLUMN_NAME = '" . $column . "'";
+            $req = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '".$table."' AND COLUMN_NAME = '" . $column . "'";
             $stmt = $this->sql->prepare($req);
             $stmt->execute();
             $result = $stmt->fetch();
             $enum_list = explode(',', preg_replace('/[^\w,]/', '', $result['COLUMN_TYPE']));
             foreach ($enum_list as $value) 
             {
-                $options[$value] = $value;
+                $option_value = str_replace('enum', '', $value);
+                $options[$option_value] = $option_value;
+                
             }
             
         return $options;
@@ -67,11 +83,18 @@ class Utilities
         }
     }
 
-    public function addNewUser($username, $user_email, $profile_picture, $password, $isAdmin = 0)
+    public function addNewUser($username, $user_email, $profile_picture, $password, $user_status = 'Active', $user_role = 'User')
     {
-        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`, `is_admin`) 
-        VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NULL, NOW(), $isAdmin);";
+        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`, `is_admin`, `user_status`, `user_role`) 
+        VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NULL, NOW(), '".$user_status."', '".$user_role."');";
 
+        $this->sql->query($req);
+    }
+    public function addNewStaffMember($username, $user_email, $profile_picture, $password,  $user_status = 'Active', $user_role)
+    {
+        $req = "INSERT INTO `users`(`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`, `user_status`, `user_role`) 
+        VALUES (NULL ,'".$username."','".$user_email."', '".$profile_picture."', '".$password."', NULL, NOW(), '".$user_status."', '".$user_role."');";
+        
         $this->sql->query($req);
     }
 
@@ -88,7 +111,7 @@ class Utilities
         if (is_numeric($user_id))
         {
             $req = "INSERT INTO `articles`(`article_id`, `article_cover_picture_link`, `article_title`, `article_content`, `user_id`) 
-    VALUES (NULL ,'".$article_cover_picture_link."','".$title."','".$content."',".$user_id.")";
+                    VALUES (NULL ,'".$article_cover_picture_link."','".$title."','".$content."',".$user_id.")";
             if ($this->sql->query($req))
             {
                 echo "L'article a été ajouté avec succès !";
@@ -151,6 +174,14 @@ class Utilities
         $req = "UPDATE ".$table." SET ".$column." = '".$value."' WHERE `".$row."` ='".$id."';";
         
         $this->sql->query($req);
+    }
+
+    public function addNewBan($table, $ban_reason = 'ForbiddenWord', $ban_start_date, $user_id, $ban_Type)
+    {
+        $req = "INSERT INTO `".$table."`(`softban_id`, `softban_reason`, `softban_start_date`, `user_id`) 
+                VALUES (NULL,'" . $ban_reason . "','" . $ban_start_date . "','" . $user_id . "')";
+        $this->Set("users", "user_status", "id", $user_id, $ban_Type);
+        $this->sql->query($req);        
     }
 
 }
