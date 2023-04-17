@@ -7,6 +7,7 @@ class Utilities
     public $index = "";
     public $sql ="";
     
+    
     # Constructeur Syntaxe exclusive __construct
     public function __construct($id)
 {
@@ -172,17 +173,27 @@ class Utilities
     public function Set($table, $column, $row  ,$id, $value)
     {
         $req = "UPDATE ".$table." SET ".$column." = '".$value."' WHERE `".$row."` ='".$id."';";
-        
+       
         $this->sql->query($req);
     }
-
-    public function addNewBan($table, $ban_reason = 'ForbiddenWord', $ban_start_date, $user_id, $ban_Type)
+    public function addNewBan($ban_reason = 'ForbiddenWord', $ban_start_date, $user_id, $ban_Type)
     {
-        $req = "INSERT INTO `".$table."`(`softban_id`, `softban_reason`, `softban_start_date`, `user_id`) 
-                VALUES (NULL,'" . $ban_reason . "','" . $ban_start_date . "','" . $user_id . "')";
+        $req ="INSERT INTO `ban`(`ban_id`, `ban_reason`, `ban_type`, `ban_start_date`, `ban_end_date`, `user_id`, `username`) 
+                        VALUES (NULL,'".$ban_reason."','".$ban_Type."','".$ban_start_date."', NULL,'".$user_id."','".$this->Get('username', 'users', 'id', $user_id)."')";
         $this->Set("users", "user_status", "id", $user_id, $ban_Type);
-        $this->sql->query($req);        
+        $stmt = $this->sql->query($req);
+        if ($stmt === false) {
+            print_r($this->sql->errorInfo());
+        } 
+        
     }
+
+
+    public function CheckBanStatus()
+    {
+        
+    }
+
 
 }
 

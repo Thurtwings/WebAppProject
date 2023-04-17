@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : dim. 16 avr. 2023 à 18:27
+-- Hôte : localhost
+-- Généré le : lun. 17 avr. 2023 à 12:18
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -27,16 +27,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `article_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `article_id` int NOT NULL,
   `article_cover_picture_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `article_title` varchar(255) NOT NULL,
-  `article_content` text,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`article_id`),
-  KEY `fk_article_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `article_content` text NOT NULL,
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `articles`
@@ -48,17 +45,31 @@ INSERT INTO `articles` (`article_id`, `article_cover_picture_link`, `article_tit
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `ban`
+--
+
+CREATE TABLE `ban` (
+  `ban_id` int NOT NULL,
+  `ban_reason` enum('ForbiddenWord','Spam') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ban_type` enum('aucun','softBan','weekBan','monthBan','permaBan') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ban_start_date` datetime NOT NULL,
+  `ban_end_date` datetime DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `username` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `games`
 --
 
-DROP TABLE IF EXISTS `games`;
-CREATE TABLE IF NOT EXISTS `games` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `games` (
+  `id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
-  `game_picture` varchar(320) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `game_picture` varchar(320) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `games`
@@ -81,38 +92,11 @@ INSERT INTO `games` (`id`, `title`, `description`, `game_picture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `soft_banned`
---
-
-DROP TABLE IF EXISTS `soft_banned`;
-CREATE TABLE IF NOT EXISTS `soft_banned` (
-  `softban_id` int NOT NULL AUTO_INCREMENT,
-  `softban_reason` enum('ForbiddenWord','Spam') NOT NULL,
-  `softban_start_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`softban_id`),
-  KEY `fk_soft_banned_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `soft_banned`
---
-
-INSERT INTO `soft_banned` (`softban_id`, `softban_reason`, `softban_start_date`, `user_id`) VALUES
-(1, '', '0000-00-00 00:00:00', 1),
-(2, '', '0000-00-00 00:00:00', 8),
-(3, '', '0000-00-00 00:00:00', 8),
-(4, '', '0000-00-00 00:00:00', 8);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int NOT NULL,
   `username` varchar(50) NOT NULL,
   `user_email` varchar(320) NOT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
@@ -120,27 +104,26 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `registration_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `user_status` enum('Active','WeekBan','MonthBan','PermaBan','SoftBan') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Active',
-  `user_role` enum('Admin','ForumMod','ContentMod','User') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'User',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `user_role` enum('Admin','ForumMod','ContentMod','User') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'User'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `password`, `user_description`, `registration_time`, `user_status`, `user_role`) VALUES
-(1, 'AdministrateurS', 'thurtwings@gmail.com', '643c26fd07b98.png', '$2y$10$V28ZsK8O1OBsxgT72r.VD.al3mJfn59j.TQz7AvhBgPqQgeMt9TPW', NULL, '2023-04-16 10:55:30', 'SoftBan', 'Admin'),
+(1, 'AdministrateurS', 'thurtwings@gmail.com', '643c26fd07b98.png', '$2y$10$V28ZsK8O1OBsxgT72r.VD.al3mJfn59j.TQz7AvhBgPqQgeMt9TPW', NULL, '2023-04-16 10:55:30', 'Active', 'Admin'),
 (2, 'AdministrateurG', 'administrateurg@gmail.com', '643bcbffd777f.jpg', '$2y$10$EOoYFoMAPnOTdVTrkfOFEu/O7an/FckzODiQOzovbhEJ1r65XJKuS', NULL, '2023-04-11 07:40:33', 'Active', 'Admin'),
 (4, 'KILAYE', 'kilaye@gmail.com', '6434311b7bc71.jpg', '$2y$10$ZpLwRx/oxPGxpmtX6v5ztugThfDyht1100hgNVNc.U.DE7KtX1fb.', NULL, '2023-04-10 15:38:39', 'Active', 'User'),
 (5, 'Janthe', 'janthe@gmail.com', '64367c9051ff6.png', '$2y$10$sspdXakOdTgYSxnn5VJVLeAtCV7SyqYDnlS5uYI7GCCzgVsE9zCom', 'Speedrunner dans l\'âme!', '2023-04-11 07:07:52', 'Active', 'User'),
-(6, 'Biiwix', 'biiwix@gmail.com', NULL, '$2y$10$BbCxEV4QAXu6O.DWVh7ozuUfk.Wst5FfbKDtEUym8U27rFkCB0RoK', NULL, '2023-04-11 07:13:16', 'WeekBan', 'User'),
+(6, 'Biiwix', 'biiwix@gmail.com', NULL, '$2y$10$BbCxEV4QAXu6O.DWVh7ozuUfk.Wst5FfbKDtEUym8U27rFkCB0RoK', NULL, '2023-04-11 07:13:16', 'Active', 'User'),
 (7, 'Rolesafe', 'rolesafe@gmail.com', NULL, '$2y$10$TdMIBAsuGEY/ozRWlWcQJOPdbRL/p6vFsXiVgSIp/w/CwW/S9t0rm', NULL, '2023-04-11 07:16:44', 'Active', 'User'),
-(8, 'Barrylesjambes', 'barrylesjambes@gmail.com', NULL, '$2y$10$tB0K7ZDAc.Q5A7Mp1sKQ3u.ru5uWA5Jv8cr0rES8DlhNqq9vgDjlK', NULL, '2023-04-11 07:19:54', 'SoftBan', 'User'),
+(8, 'Barrylesjambes', 'barrylesjambes@gmail.com', NULL, '$2y$10$tB0K7ZDAc.Q5A7Mp1sKQ3u.ru5uWA5Jv8cr0rES8DlhNqq9vgDjlK', NULL, '2023-04-11 07:19:54', 'Active', 'User'),
 (9, 'Strackel', 'strackel@gmail.com', NULL, '$2y$10$9DyELpJ7W7pHeC4wtIdbKec7OQggkTmU2Vs7Eh2m.P/s7/EwsIx1y', NULL, '2023-04-11 07:23:35', 'Active', 'User'),
 (10, 'Chachamaxx', 'chachamaxx@gmail.com', NULL, '$2y$10$3uNxkkkdgQQuONoU466Df.uWkEd8UIQASdov0vKFKC0LipPqAVqe6', NULL, '2023-04-11 07:26:25', 'Active', 'User'),
 (11, 'LF712', 'lf712@gmail.com', NULL, '$2y$10$UO6Nqx7HRR/0unqupxLJ9uvEq8whEYuoL2GghmrUqrxyDeyUC2KAS', NULL, '2023-04-11 07:28:35', 'Active', 'User'),
 (12, 'Petrichor', 'petrichor@gmail.com', NULL, '$2y$10$2d.w5m8iJu60e/uKVklrIO2G4MTJhUJISCdiUpOY63mrttxLNa8qK', NULL, '2023-04-11 07:29:35', 'Active', 'User'),
-(13, 'Blake_Faythe', 'blakefaythe@gmail.com', NULL, '$2y$10$fBqnRK9kf8ahUn1WAbjJ3e0sf9GU2iNodjg1lXSQJAU/eJBfE1EA.', NULL, '2023-04-11 07:31:29', 'PermaBan', 'User'),
+(13, 'Blake_Faythe', 'blakefaythe@gmail.com', NULL, '$2y$10$fBqnRK9kf8ahUn1WAbjJ3e0sf9GU2iNodjg1lXSQJAU/eJBfE1EA.', NULL, '2023-04-11 07:31:29', 'Active', 'User'),
 (14, 'Neetsel', 'neetsel@gmail.com', NULL, '$2y$10$VO0HfduINXYE4iNevrZKN.Y0TDxtZFAn6G1xHwTiUxQY14Trd/mqu', NULL, '2023-04-11 07:32:16', 'Active', 'User'),
 (15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', NULL, '2023-04-11 07:34:45', 'Active', 'User'),
 (22, 'AdministrateurE', 'thu', NULL, '$2y$10$CYChnFmjTneMo2x5TqtDL.NveHhoZkH6qm5wkYheQZ23lx8AvFsiS', NULL, '2023-04-16 11:01:59', 'Active', 'User'),
@@ -153,20 +136,16 @@ INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `passwor
 -- Structure de la table `videos`
 --
 
-DROP TABLE IF EXISTS `videos`;
-CREATE TABLE IF NOT EXISTS `videos` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `videos` (
+  `id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
   `video_url` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
   `game_id` int DEFAULT NULL,
   `category_speedrun` enum('Any%','TAS','NG+','100%','Glitchless','Beat the Game') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Any%',
-  `run_time` time NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `game_id` (`game_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `run_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `videos`
@@ -187,6 +166,78 @@ INSERT INTO `videos` (`id`, `title`, `description`, `video_url`, `user_id`, `gam
 (12, 'ELDEN RING en ANY% GLITCHLESS par KEMIST en 1:35:04 ', NULL, 'https://www.youtube.com/embed/uIqASNq6Qr4', 15, 13, 'Glitchless', '01:35:04');
 
 --
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`article_id`),
+  ADD KEY `fk_article_user_id` (`user_id`);
+
+--
+-- Index pour la table `ban`
+--
+ALTER TABLE `ban`
+  ADD PRIMARY KEY (`ban_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Index pour la table `games`
+--
+ALTER TABLE `games`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `game_id` (`game_id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `article_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `ban`
+--
+ALTER TABLE `ban`
+  MODIFY `ban_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `games`
+--
+ALTER TABLE `games`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT pour la table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -198,10 +249,10 @@ ALTER TABLE `articles`
   ADD CONSTRAINT `fk_articles_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `soft_banned`
+-- Contraintes pour la table `ban`
 --
-ALTER TABLE `soft_banned`
-  ADD CONSTRAINT `fk_soft_banned_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `ban`
+  ADD CONSTRAINT `fk_ban_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,31 +2,12 @@
 require_once("../php/Utilities.php");
 $utils = new Utilities(0);
 $table="";
+$ban_reason = "";
 require_once("../GoToThePage.php");
+
 	if(isset($_POST['SubmitInsert'])) 
 	{
-        switch($_POST["user_status"])
-        {
-            case 'Active':
-                
-                    break;
-            case 'SoftBan':
-                $table = "soft_banned";
-                    break;
-            case 'WeekBan':
-                $table = "week_banned";
-                    break;
-            case 'MonthBan':
-                $table = "month_banned";
-                    break;
-            case 'PermaBan':
-                $table = "perma_banned";
-                    break;
-        }
-		// $utils->Set("users", "user_status", "username", $_POST['username'], $_POST['user_status']);
-        $utils->addNewBan($table, $_POST['ban_reason'], "`NOW()`", $utils->Get("id", "users", "username", $_POST['username']), $_POST['user_status']);
-        
-
+		$utils->addNewBan($_POST['ban_reason'], date("Y-m-d H:i:s"), $utils->Get("id", "users", "username", $_POST['username']), $_POST['user_status']);
 	}
 
 
@@ -41,10 +22,11 @@ require_once("../GoToThePage.php");
 
 <div id="navbar-container"></div>
 
-	
 		<a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary m-1"> Ajouter Vidéos </a>
         <a href="<?php echo $NEW_ARTICLE; ?>" class="btn btn-primary m-1"> Ajouter Articles</a>
 		<a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary m-1"> Ajouter Jeux</a>
+		<a href="<?php echo $NEW_STAFF_MEMBER; ?>" class="btn btn-warning m-1"> Modifier le rôle d'un membre</a>
+
 	<!-- Formulaire de création -->
 	<div class="mx-auto" style="width: 500px">
 		
@@ -86,7 +68,7 @@ require_once("../GoToThePage.php");
             <div class="form-outline mb-4">
 				<label class="form-label text-white" for="form4Example2">Raison du ban</label>
                 <select name="ban_reason" id="ban_reason" class="form-select">
-					<?php  foreach ($utils->FetchOptions($table."_reason", $table) as $key => $value) 
+					<?php  foreach ($utils->FetchOptions("ban_reason", "ban") as $key => $value) 
 					{
 						echo "<option>" . $value ."</option>";
 					} ?>
