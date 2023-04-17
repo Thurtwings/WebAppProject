@@ -27,13 +27,13 @@ $idUserToDisplay = $_GET['user_id'];
             <?php  
                 if($utils->Get("profile_picture", 'users', 'id', $idUserToDisplay) !== null)
                 {?>
-                   <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $idUserToDisplay); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture">
-                   <?php   
+                    <img src="../img/UsersProfilePictures/<?php echo $utils->Get("profile_picture", 'users', 'id', $idUserToDisplay); ?>" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture">
+                    <?php   
                 } 
                 else 
                 {?>
-                   <img src="../img/default_avatar.png" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture">
-                   <?php 
+                    <img src="../img/default_avatar.png" class="rounded-circle border border-5 border-dark mb-3" height="150" alt="User profile picture">
+                    <?php 
                 }?>
         </div>
 
@@ -71,7 +71,9 @@ $idUserToDisplay = $_GET['user_id'];
                 foreach ($utils->SelectAll("articles") as $key => $value) 
                 {
                     if($value['user_id'] == $idUserToDisplay)
-                    {?>
+                    {
+                    ?>
+
                         <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                             <div class="card shadow-sm h-100">
                                 <img src="../img/<?php echo $value['article_cover_picture_link']; ?>" class="card-img-top" alt="Image d'illustration" id="<?php echo $value['article_id']; ?>">

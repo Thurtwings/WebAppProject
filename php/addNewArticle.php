@@ -17,11 +17,10 @@ $utils = new Utilities(0);
 <body>
 <div id="navbar-container"></div>
 
+	<a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary m-1">Nouvelle vidéo</a>
+    <a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary m-1"> Ajouter Jeux</a>
+	<a href="<?php echo $NEW_STAFF_MEMBER; ?>" class="btn btn-warning m-1"> Modifier le rôle d'un membrer</a>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-		<a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary">Nouvelle vidéo</a>
-        <a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary"> Ajouter Jeux</a>
-      </div>
 	<!-- Formulaire de création -->
 	<div class="mx-auto" style="width: 500px">
 		

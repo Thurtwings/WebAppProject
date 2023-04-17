@@ -46,7 +46,7 @@ $utils = new Utilities(0);
         <?php
         if(isset($_SESSION['user_id']))
         {
-            if($utils->Get("is_admin", "users", "id", $_SESSION['user_id']) == 1)
+            if($utils->Get("user_role", "users", "id", $_SESSION['user_id']) == ('Admin'))
             {?>
                   <a class="nav-link text-white" href="<?php echo $BACKOFFICE; ?>">Backoffice</a>
             <?php
@@ -94,7 +94,7 @@ $utils = new Utilities(0);
                       <?php 
                       }?>
 
-                      <h5></h5>
+                      
                   <?php
                   }
                   else
@@ -130,14 +130,7 @@ $utils = new Utilities(0);
                 ?>
               </ul>
           </div>
-          <div class="d-flex align-items-center ms-auto">
-            <?php 
-            if(isset($_SESSION['user_id']) && $_SESSION['user_id']) 
-            {?>
-              <h5 class="text-white ms-5">Hello <?php echo $utils->Get("username", 'users', 'id', $_SESSION['user_id']); ?></h5>
-            <?php 
-            } ?>
-          </div>
+          
           
         </div>
       </div>

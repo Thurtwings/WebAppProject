@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $stmt->execute([$username, $mail, $hash]);
         $_SESSION['user_id'] = $pdo->lastInsertId();
         $_SESSION['user_email'] = $_POST['email'];
-        header('Location: ../pages/index.php');
+        header('Location: ../php/login.php');
         exit();
     }
 }
