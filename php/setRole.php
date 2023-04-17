@@ -25,6 +25,7 @@ require_once("../GoToThePage.php");
 		<a href="<?php echo $NEW_VIDEO; ?>" class="btn btn-primary m-1"> Ajouter Vidéos </a>
         <a href="<?php echo $NEW_ARTICLE; ?>" class="btn btn-primary m-1"> Ajouter Articles</a>
 		<a href="<?php echo $NEW_GAME; ?>" class="btn btn-primary m-1"> Ajouter Jeux</a>
+        <a href="<?php echo $SET_STATUS; ?>" class="btn btn-warning"> Modifier le status d'un membre</a>
 	<!-- Formulaire de création -->
 	<div class="mx-auto" style="width: 500px">
 		
