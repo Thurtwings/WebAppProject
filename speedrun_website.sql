@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 17 avr. 2023 à 12:18
+-- Généré le : lun. 17 avr. 2023 à 14:32
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -57,6 +57,58 @@ CREATE TABLE `ban` (
   `user_id` int NOT NULL,
   `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `ban`
+--
+
+INSERT INTO `ban` (`ban_id`, `ban_reason`, `ban_type`, `ban_start_date`, `ban_end_date`, `user_id`, `username`) VALUES
+(10, 'ForbiddenWord', 'softBan', '2023-04-17 16:12:30', '2023-04-17 17:12:30', 14, 'Neetsel');
+
+--
+-- Déclencheurs `ban`
+--
+DELIMITER $$
+CREATE TRIGGER `ban_trigger` BEFORE INSERT ON `ban` FOR EACH ROW BEGIN
+    DECLARE ban_duration INT;
+    DECLARE last_ban_duration INT;
+
+    -- Determine ban duration based on ban type
+    SET ban_duration = CASE NEW.ban_type
+        WHEN 'softBan' THEN 1
+        WHEN 'weekBan' THEN 168
+        WHEN 'monthBan' THEN 720
+        ELSE 0
+    END;
+
+    -- Check if user has been previously banned
+    SELECT TIMESTAMPDIFF(HOUR, NOW(), ban_end_date) INTO last_ban_duration
+    FROM ban
+    WHERE user_id = NEW.user_id
+    AND ban_type != 'aucun'
+    ORDER BY ban_end_date DESC
+    LIMIT 1;
+
+    -- If user has an active ban, update the existing ban record
+    IF last_ban_duration IS NOT NULL THEN
+        IF last_ban_duration > 0 THEN
+            UPDATE ban
+            SET ban_type = NEW.ban_type,
+                ban_start_date = NOW(),
+                ban_end_date = DATE_ADD(NOW(), INTERVAL ban_duration HOUR)
+            WHERE user_id = NEW.user_id
+            AND ban_type != 'aucun';
+        ELSE
+            UPDATE ban SET ban_type = 'aucun' WHERE user_id = NEW.user_id AND ban_type != 'aucun';
+        END IF;
+    -- If user has no active ban, create a new ban record
+    ELSE
+        SET NEW.ban_start_date = NOW();
+        SET NEW.ban_end_date = DATE_ADD(NEW.ban_start_date, INTERVAL ban_duration HOUR);
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -121,12 +173,12 @@ INSERT INTO `users` (`id`, `username`, `user_email`, `profile_picture`, `passwor
 (8, 'Barrylesjambes', 'barrylesjambes@gmail.com', NULL, '$2y$10$tB0K7ZDAc.Q5A7Mp1sKQ3u.ru5uWA5Jv8cr0rES8DlhNqq9vgDjlK', NULL, '2023-04-11 07:19:54', 'Active', 'User'),
 (9, 'Strackel', 'strackel@gmail.com', NULL, '$2y$10$9DyELpJ7W7pHeC4wtIdbKec7OQggkTmU2Vs7Eh2m.P/s7/EwsIx1y', NULL, '2023-04-11 07:23:35', 'Active', 'User'),
 (10, 'Chachamaxx', 'chachamaxx@gmail.com', NULL, '$2y$10$3uNxkkkdgQQuONoU466Df.uWkEd8UIQASdov0vKFKC0LipPqAVqe6', NULL, '2023-04-11 07:26:25', 'Active', 'User'),
-(11, 'LF712', 'lf712@gmail.com', NULL, '$2y$10$UO6Nqx7HRR/0unqupxLJ9uvEq8whEYuoL2GghmrUqrxyDeyUC2KAS', NULL, '2023-04-11 07:28:35', 'Active', 'User'),
-(12, 'Petrichor', 'petrichor@gmail.com', NULL, '$2y$10$2d.w5m8iJu60e/uKVklrIO2G4MTJhUJISCdiUpOY63mrttxLNa8qK', NULL, '2023-04-11 07:29:35', 'Active', 'User'),
+(11, 'LF712', 'lf712@gmail.com', NULL, '$2y$10$UO6Nqx7HRR/0unqupxLJ9uvEq8whEYuoL2GghmrUqrxyDeyUC2KAS', NULL, '2023-04-11 07:28:35', 'SoftBan', 'User'),
+(12, 'Petrichor', 'petrichor@gmail.com', NULL, '$2y$10$2d.w5m8iJu60e/uKVklrIO2G4MTJhUJISCdiUpOY63mrttxLNa8qK', NULL, '2023-04-11 07:29:35', 'SoftBan', 'User'),
 (13, 'Blake_Faythe', 'blakefaythe@gmail.com', NULL, '$2y$10$fBqnRK9kf8ahUn1WAbjJ3e0sf9GU2iNodjg1lXSQJAU/eJBfE1EA.', NULL, '2023-04-11 07:31:29', 'Active', 'User'),
-(14, 'Neetsel', 'neetsel@gmail.com', NULL, '$2y$10$VO0HfduINXYE4iNevrZKN.Y0TDxtZFAn6G1xHwTiUxQY14Trd/mqu', NULL, '2023-04-11 07:32:16', 'Active', 'User'),
-(15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', NULL, '2023-04-11 07:34:45', 'Active', 'User'),
-(22, 'AdministrateurE', 'thu', NULL, '$2y$10$CYChnFmjTneMo2x5TqtDL.NveHhoZkH6qm5wkYheQZ23lx8AvFsiS', NULL, '2023-04-16 11:01:59', 'Active', 'User'),
+(14, 'Neetsel', 'neetsel@gmail.com', NULL, '$2y$10$VO0HfduINXYE4iNevrZKN.Y0TDxtZFAn6G1xHwTiUxQY14Trd/mqu', NULL, '2023-04-11 07:32:16', 'SoftBan', 'User'),
+(15, 'Canblaster', 'canblaster@gmail.com', NULL, '$2y$10$H0cuVWR5UK2666pnHi0oaOfmRiKMh8gXFPRqXEBywgQmOnw.VWnYu', NULL, '2023-04-11 07:34:45', 'SoftBan', 'User'),
+(22, 'AdministrateurE', 'thu', NULL, '$2y$10$CYChnFmjTneMo2x5TqtDL.NveHhoZkH6qm5wkYheQZ23lx8AvFsiS', NULL, '2023-04-16 11:01:59', 'Active', 'Admin'),
 (23, 'AdministrateurF', 'AdministrateurF@gmail.com', NULL, '$2y$10$mzpzi2YibjAkBiqKCTS83eJfIR9fo1UZPm0zPM2Hakh29NvjtlvBO', NULL, '2023-04-16 14:41:30', 'Active', 'User'),
 (24, 'AdminGeneral', 'admin_general@gmail.com', '', 'AdminGeneral', NULL, '2023-04-16 14:47:07', 'Active', 'Admin');
 
@@ -217,7 +269,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT pour la table `ban`
 --
 ALTER TABLE `ban`
-  MODIFY `ban_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ban_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `games`
